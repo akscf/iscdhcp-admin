@@ -4,13 +4,13 @@ Basic features:
  - control the server (start/stop/reload/etc)
  - manager the configuration
  - manager the lease (*)
- - OMAPI service (*)
+ - OMAPI services (*)
 
 
 ------------------------
 Screenshots:  
-![alt text](https://github.com/akscf/isc-dhcp-manager/sshots/ss1.png)
-![alt text](https://github.com/akscf/isc-dhcp-manager/sshots/ss3.png)
+![alt text](https://github.com/akscf/isc-dhcp-manager/blob/master/sshots/ss1.png)
+![alt text](https://github.com/akscf/isc-dhcp-manager/blob/master/sshots/ss3.png)
 
 ------------------------
 1. Installtion and setup
