@@ -1,0 +1,70 @@
+{
+    "name":"webconsole",
+    "include":[
+        {
+            "path":"${QOOXDOO_PATH}/tool/data/config/application.json"
+        }
+    ],
+
+    "export":[
+        "api",
+        "api-data",
+        "build",
+        "clean",
+        "distclean",
+        "dependencies",
+        "fix",
+        "info",
+        "inspector",
+        "lint",
+        "migration",
+        "pretty",
+        "profiling",
+        "source",
+        "source-all",
+        "source-hybrid",
+        "test",
+        "test-source",
+        "translation",
+        "validate-config",
+        "validate-manifest",
+        "watch"
+    ],
+
+    "default-job":"source-hybrid",
+
+    "let":{
+        "APPLICATION"   :"webapp",
+        "QOOXDOO_PATH"  :"../../../libs/qooxdoo-5.0.2-sdk",
+        "QXTHEME"       :"webapp.theme.CFDesktop",
+        "API_EXCLUDE"   :["${APPLICATION}.theme.*"],
+        "LOCALES"       :[ "ru", "en", "de", "fr" ],
+        "CACHE"         :"${TMPDIR}/qx${QOOXDOO_VERSION}/cache",
+        "INCLUDE"       :["org.cforge.*", "webapp.*"],
+        "ROOT"          :".",
+        "OPTIMIZE"      :["comments"]
+    },
+
+    "jobs":{
+        "build-script":{
+            "environment":{
+                "org.cforge.env.app_name"               :"cfcms",
+                "org.cforge.env.app_version"            :"1.0.0",
+                "org.cforge.env.storage_name"           :"org.cforge.dhcpmgr",
+                "org.cforge.env.storage_version"        :"1",
+                "org.cforge.env.xor_key"                :"mcr9rkx94rjf3",
+                "org.cforge.env.rpc_url"                :"/rpc/",
+                "org.cforge.env.preferred_lang"         :"RU",
+                "org.cforge.env.about_str1"             :"<b>&copy;2019 by&nbsp;<a href=\"mailto:aks@cforge.org\">AlexandrinKS</a></b>"
+            },
+            "variants":{
+                "=qx.debug":["on"]
+            },
+            "compile-options":{
+                "code":{
+                    "format":false
+                }
+            }
+        }
+    }
+}

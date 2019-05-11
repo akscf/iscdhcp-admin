@@ -1,0 +1,393 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: AlexandrinK <aks@cforge.org>\n"
+"POT-Creation-Date: 2014-10-20 11:31+0400\n"
+"PO-Revision-Date: 2014-10-20 11:31+0400\n"
+"Last-Translator: AlexandrinK <aks@cforge.org>\n"
+"Language-Team: AlexandrinK <aks@cforge.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: org/cforge/dhcpmgr/definitions/Definition.js:21
+msgid "Viewer"
+msgstr ""
+
+#: org/cforge/dhcpmgr/definitions/Definition.js:22
+msgid "Administrator"
+msgstr ""
+
+#: org/cforge/dhcpmgr/services/DhcpServerManagementService.js:16
+msgid "Starting..."
+msgstr ""
+
+#: org/cforge/dhcpmgr/services/DhcpServerManagementService.js:27
+msgid "Stopping..."
+msgstr ""
+
+#: org/cforge/dhcpmgr/services/DhcpServerManagementService.js:38
+msgid "Reloading..."
+msgstr ""
+
+#: org/cforge/dhcpmgr/services/DhcpServerManagementService.js:49
+#: org/cforge/dhcpmgr/services/DhcpServerManagementService.js:60
+#: org/cforge/dhcpmgr/services/DhcpServerManagementService.js:82
+#: org/cforge/dhcpmgr/services/DhcpServerManagementService.js:104
+#: org/cforge/dhcpmgr/services/SystemInformationService.js:16
+msgid "Loading..."
+msgstr ""
+
+#: org/cforge/dhcpmgr/services/DhcpServerManagementService.js:71
+#: org/cforge/dhcpmgr/services/DhcpServerManagementService.js:93
+msgid "Saving..."
+msgstr ""
+
+#: org/cforge/qooxdoo/ui/form/FormContainer1.js:48
+#: org/cforge/qooxdoo/ui/form/FormContainer2.js:52
+msgid "Require field!"
+msgstr ""
+
+#: org/cforge/qooxdoo/ui/workplace/GenericWorkplace.js:31
+msgid "Application settings"
+msgstr ""
+
+#: org/cforge/qooxdoo/ui/workplace/GenericWorkplace.js:38
+msgid "Workplace"
+msgstr ""
+
+#: org/cforge/qooxdoo/ui/workplace/GenericWorkplace.js:43
+msgid "Language"
+msgstr ""
+
+#: org/cforge/qooxdoo/ui/workplace/GenericWorkplace.js:48
+msgid "Theme"
+msgstr ""
+
+#: webapp/dialogs/AboutDialog.js:8
+#: org/cforge/qooxdoo/ui/workplace/GenericWorkplace.js:53
+msgid "About"
+msgstr ""
+
+#: org/cforge/qooxdoo/ui/workplace/GenericWorkplace.js:63
+msgid "Logout"
+msgstr ""
+
+#: webapp/dialogs/QuestionDialog2.js:33 webapp/dialogs/ErrorDialog.js:31
+#: webapp/dialogs/ExceptionDialog.js:36 webapp/dialogs/AboutDialog.js:50
+#: webapp/dialogs/InformationDialog.js:29
+#: webapp/dialogs/template/UploadDialog.js:42
+#: webapp/workplaces/administrator/dialogs/TextViewDialog.js:33
+#: webapp/dialogs/QuestionDialog.js:29
+msgid "Close"
+msgstr ""
+
+#: webapp/dialogs/AboutDialog.js:69
+msgid "Server version: %1"
+msgstr ""
+
+#: webapp/dialogs/AboutDialog.js:70
+msgid "Client version: %1"
+msgstr ""
+
+#: webapp/dialogs/AboutDialog.js:73
+msgid "Click here for more information about me."
+msgstr ""
+
+#: webapp/dialogs/BusyIndicator.js:19
+msgid "Processing..."
+msgstr ""
+
+#: webapp/dialogs/ErrorDialog.js:8
+msgid "Error"
+msgstr ""
+
+#: webapp/dialogs/ExceptionDialog.js:8
+msgid "Exception"
+msgstr ""
+
+#: webapp/dialogs/ExceptionDialog.js:18 webapp/dialogs/ExceptionDialog.js:19
+msgid "undefined"
+msgstr ""
+
+#: webapp/dialogs/ExceptionDialog.js:28
+msgid "Class or service name"
+msgstr ""
+
+#: webapp/dialogs/ExceptionDialog.js:29
+msgid "Method name"
+msgstr ""
+
+#: webapp/dialogs/ExceptionDialog.js:55
+msgid "Internal server error (see. logs)"
+msgstr ""
+
+#: webapp/dialogs/ExceptionDialog.js:58
+msgid "Invalid argument: %1"
+msgstr ""
+
+#: webapp/dialogs/ExceptionDialog.js:61
+msgid "Invalid property: %1"
+msgstr ""
+
+#: webapp/dialogs/ExceptionDialog.js:64
+msgid "Already exists: %1"
+msgstr ""
+
+#: webapp/dialogs/ExceptionDialog.js:67
+msgid "Not found: %1"
+msgstr ""
+
+#: webapp/dialogs/ExceptionDialog.js:70
+msgid "Out of date: %1"
+msgstr ""
+
+#: webapp/dialogs/ExceptionDialog.js:76 webapp/dialogs/ExceptionDialog.js:109
+msgid "Permission denied"
+msgstr ""
+
+#: webapp/dialogs/ExceptionDialog.js:82
+msgid "Unauthorized access"
+msgstr ""
+
+#: webapp/dialogs/ExceptionDialog.js:94
+msgid "Invalid service name: %1"
+msgstr ""
+
+#: webapp/dialogs/ExceptionDialog.js:97
+msgid "Service not found: %1"
+msgstr ""
+
+#: webapp/dialogs/ExceptionDialog.js:100
+msgid "Class not found: %1"
+msgstr ""
+
+#: webapp/dialogs/ExceptionDialog.js:103
+msgid "Method not found: %1"
+msgstr ""
+
+#: webapp/dialogs/ExceptionDialog.js:106
+msgid "Invalid parameter: %1"
+msgstr ""
+
+#: webapp/dialogs/InformationDialog.js:8
+msgid "Information"
+msgstr ""
+
+#: webapp/dialogs/QuestionDialog2.js:20 webapp/dialogs/QuestionDialog.js:8
+#: webapp/dialogs/QuestionDialog.js:22
+msgid "Alert"
+msgstr ""
+
+#: webapp/dialogs/QuestionDialog2.js:27
+msgid "Don't ask again"
+msgstr ""
+
+#: webapp/dialogs/template/UploadDialog.js:8
+msgid "Upload manager"
+msgstr ""
+
+#: webapp/dialogs/template/UploadDialog.js:34
+msgid "Select file to upload"
+msgstr ""
+
+#: webapp/dialogs/template/UploadDialog.js:41
+msgid "Upload"
+msgstr ""
+
+#: webapp/dialogs/template/UploadDialog.js:62
+msgid "Uploading..."
+msgstr ""
+
+#: webapp/dialogs/template/UploadDialog.js:78
+msgid "Response is null"
+msgstr ""
+
+#: webapp/utils/RpcManager.js:59 webapp/dialogs/template/UploadDialog.js:85
+msgid "Session is outdated!"
+msgstr ""
+
+#: webapp/dialogs/template/UploadDialog.js:85
+msgid "Upload failed"
+msgstr ""
+
+#: webapp/utils/RpcManager.js:59
+msgid "Authorization failed"
+msgstr ""
+
+#: webapp/utils/SessionManager.js:111
+msgid "Login, please wait..."
+msgstr ""
+
+#: webapp/utils/SessionManager.js:118
+msgid "Unexpected exception"
+msgstr ""
+
+#: webapp/utils/SessionManager.js:126
+msgid "Authentication failed"
+msgstr ""
+
+#: webapp/utils/SessionManager.js:126
+msgid "Incorrect userid or password."
+msgstr ""
+
+#: webapp/utils/SessionManager.js:165
+msgid "Authentication"
+msgstr ""
+
+#: webapp/utils/SessionManager.js:168
+msgid "userid"
+msgstr ""
+
+#: webapp/utils/SessionManager.js:169
+msgid "password"
+msgstr ""
+
+#: webapp/utils/SessionManager.js:170
+msgid "Remember password"
+msgstr ""
+
+#: webapp/utils/SessionManager.js:185
+msgid "Login"
+msgstr ""
+
+#: webapp/utils/TaskManager.js:14
+msgid "Please wait, it may take some time..."
+msgstr ""
+
+#: webapp/utils/WorkplaceManager.js:88
+msgid "No suitable workspace!"
+msgstr ""
+
+#: webapp/workplaces/administrator/commons/ConfigEditorWidget.js:30
+#: webapp/workplaces/administrator/pages/ConfigPage.js:121
+msgid "Reload config"
+msgstr ""
+
+#: webapp/workplaces/administrator/commons/ConfigEditorWidget.js:31
+msgid "Save changes"
+msgstr ""
+
+#: webapp/workplaces/administrator/commons/ConfigEditorWidget.js:33
+msgid "Undo"
+msgstr ""
+
+#: webapp/workplaces/administrator/commons/ConfigEditorWidget.js:35
+msgid "enter text for search"
+msgstr ""
+
+#: webapp/workplaces/administrator/commons/ConfigEditorWidget.js:42
+msgid "Find"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/ConfigPage.js:9
+msgid "Server"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/ConfigPage.js:28
+#: webapp/workplaces/administrator/pages/ConfigPage.js:97
+msgid "Start server"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/ConfigPage.js:29
+#: webapp/workplaces/administrator/pages/ConfigPage.js:109
+msgid "Stop server"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/ConfigPage.js:30
+msgid "Apply a new configuration"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/ConfigPage.js:32
+msgid "Refresh state"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/ConfigPage.js:35
+msgid "Edit interfaces"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/ConfigPage.js:43
+msgid "Interfaces"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/ConfigPage.js:44
+msgid "Version"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/ConfigPage.js:45
+msgid "State"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/ConfigPage.js:46
+msgid "PID"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/ConfigPage.js:97
+#: webapp/workplaces/administrator/pages/ConfigPage.js:109
+#: webapp/workplaces/administrator/pages/ConfigPage.js:121
+msgid "Do you want to continue?"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/ConfigPage.js:97
+#: webapp/workplaces/administrator/pages/ConfigPage.js:109
+#: webapp/workplaces/administrator/pages/ConfigPage.js:121
+msgid "No"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/ConfigPage.js:97
+#: webapp/workplaces/administrator/pages/ConfigPage.js:109
+#: webapp/workplaces/administrator/pages/ConfigPage.js:121
+msgid "Yes"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/LeasesPage.js:9
+msgid "Leases"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/LeasesPage.js:28
+#: webapp/workplaces/administrator/pages/LeasesPage.js:33
+#: webapp/workplaces/administrator/pages/LogsPage.js:28
+msgid "Refresh"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/LeasesPage.js:30
+#: webapp/workplaces/administrator/pages/LogsPage.js:30
+msgid "enter the text for search"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/LeasesPage.js:35
+msgid "View details"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/LeasesPage.js:37
+msgid "Expiry"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/LeasesPage.js:37
+msgid "HW address"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/LeasesPage.js:37
+msgid "IP Address"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/LeasesPage.js:37
+msgid "Info"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/LogsPage.js:9
+msgid "Logs"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/LogsPage.js:32
+msgid "line count for view"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/LogsPage.js:34
+msgid "Message"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/LogsPage.js:62
+msgid "Record details"
+msgstr ""
