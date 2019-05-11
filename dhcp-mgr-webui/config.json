@@ -35,7 +35,7 @@
 
     "let":{
         "APPLICATION"   :"webapp",
-        "QOOXDOO_PATH"  :"../../../libs/qooxdoo-5.0.2-sdk",
+        "QOOXDOO_PATH"  :"../libs/qooxdoo-5.0.2-sdk",
         "QXTHEME"       :"webapp.theme.CFDesktop",
         "API_EXCLUDE"   :["${APPLICATION}.theme.*"],
         "LOCALES"       :[ "ru", "en", "de", "fr" ],
