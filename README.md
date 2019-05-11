@@ -13,8 +13,8 @@ Screenshots:
 ![alt text](https://github.com/akscf/isc-dhcp-manager/blob/master/sshots/ss3.png)
 
 ------------------------
-1. Installtion and setup
-   Download a last version: 
+1. Installtion and setup   
+   Download a last version:  
    Unpack isc-dhcp-manager-x.x..tar.gz to /opt
  
    The configurations:  
