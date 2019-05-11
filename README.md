@@ -3,7 +3,7 @@ Simple web interface and json-rpc services for ISC DHCP Serevr written in Perl.
 Basic features:  
  - control the server (start/stop/reload/etc)
  - manager the configuration
- - manager the lease (*)
+ - view leases (*)
  - OMAPI services (*)
 
 
