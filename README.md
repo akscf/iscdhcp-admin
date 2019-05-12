@@ -14,7 +14,7 @@ Screenshots:
 
 ------------------------
 1. Installtion and setup   
-   Download a last version:  
+   Download the latest version:  
    Unpack isc-dhcp-manager-x.x..tar.gz to /opt
  
    The configurations:  
