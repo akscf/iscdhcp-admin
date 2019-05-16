@@ -10,11 +10,12 @@ Basic features:
 ------------------------
 Screenshots:  
 ![alt text](https://github.com/akscf/isc-dhcp-manager/blob/master/sshots/ss1.png)
+![alt text](https://github.com/akscf/isc-dhcp-manager/blob/master/sshots/ss2.png)
 ![alt text](https://github.com/akscf/isc-dhcp-manager/blob/master/sshots/ss3.png)
 
 ------------------------
 1. Installtion and setup   
-   Download the latest version:  
+   Download the latest version: [isc-dhcp-manager-1.0.0-17052019](https://sourceforge.net/projects/cfdisfiles/files/isc-dhcp-manager/isc-dhcp-manager-1.0.0-17052019.tar.gz/download) 
    Unpack isc-dhcp-manager-x.x..tar.gz to /opt
  
    The configurations:  
