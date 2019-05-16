@@ -1,6 +1,9 @@
 # ******************************************************************************************
 # Leases DB services
-# 
+#
+# NOTE: 
+#   it isn't optimized version, use OMAPI service for manager the leasesdb
+#
 # @author AlexandrinK <aks@cforge.org>
 # ******************************************************************************************
 package DHCPMGR::Services::LeasesManagementService;
@@ -32,6 +35,15 @@ sub get_class_name {
 # ---------------------------------------------------------------------------------------------------------------------------------
 # public methods
 # ---------------------------------------------------------------------------------------------------------------------------------
+sub rpc_lookup {
+	my ( $self, $sec_ctx, $filter) = @_;
+	my $mgr = $self->{mgr};
+	my $result=[];
+    #
+    restrict_access($self, $sec_ctx, [ROLE_ADMIN, ROLE_VIEWER]);
+    #
+    return $result;
+}
 
 # ---------------------------------------------------------------------------------------------------------------------------------
 # private methods

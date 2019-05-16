@@ -9,13 +9,13 @@ use strict;
 
 use Log::Log4perl;
 use File::Slurp;
+use File::Copy;
 use ReadBackwards;
 use WSP::WspException;
 use WSP::WspDefs qw(:ALL);
 use DHCPMGR::Defs qw(:ALL);
 use DHCPMGR::Models::ServerStatus;
 use DHCPMGR::FilterSettings;
-
 
 # ---------------------------------------------------------------------------------------------------------------------------------
 sub new ($$;$) {
@@ -49,8 +49,11 @@ sub rpc_serverStart {
     unless($cmd) {
     	die WSP::WspException->new( 'Missing configuration property: dhcp.cmd_start', RPC_ERR_CODE_INTERNAL_ERROR );
     }
+    srv_control_lock($self, 1);
     system($cmd);
-    if ($? == -1) {
+    my $res = $?;
+    srv_control_lock($self, 0);
+    if ($res == -1) {
     	my $err = $!;
     	$self->{logger}->error("Failed to start server: ".$err." (".$cmd.")");
     	die WSP::WspException->new( "Failed to start server: ".$err, RPC_ERR_CODE_INTERNAL_ERROR );    	
@@ -69,8 +72,11 @@ sub rpc_serverStop {
     unless($cmd) {
     	die WSP::WspException->new( 'Missing configuration property: dhcp.cmd_stop', RPC_ERR_CODE_INTERNAL_ERROR );
     }
-    system($cmd);
-    if ($? == -1) {
+    srv_control_lock($self, 1);
+    system($cmd); 
+    my $res = $?;
+    srv_control_lock($self, 0);
+    if ($res == -1) {
     	my $err = $!;
     	$self->{logger}->error("Failed to stop server: ".$err." (".$cmd.")");
     	die WSP::WspException->new( 'Failed to stop server: '.$err, RPC_ERR_CODE_INTERNAL_ERROR );    	
@@ -87,8 +93,11 @@ sub rpc_serverReload {
     unless($cmd) {
     	die WSP::WspException->new( 'Missing configuration property: dhcp.cmd_reload', RPC_ERR_CODE_INTERNAL_ERROR );
     }
-    system($cmd);    
-    if ($? == -1) {
+    srv_control_lock($self, 1);
+    system($cmd); 
+    my $res = $?;
+    srv_control_lock($self, 0);
+    if ($res == -1) {
     	my $err = $!;
     	$self->{logger}->error("Failed to reload server: ".$err." (".$cmd.")");
     	die WSP::WspException->new( 'Failed to reload server: '.$err, RPC_ERR_CODE_INTERNAL_ERROR );    	
@@ -162,7 +171,14 @@ sub rpc_configWrite {
     if($txt && length($txt) <= 10) {
     	die WSP::WspException->new( 'Configuration is too small', RPC_ERR_CODE_INTERNAL_ERROR );	
     }
+    
+    srv_config_lock($self, 1);
+    
+    copy($cfg_file, $cfg_file.'.old');
     write_file($cfg_file, $txt);
+
+    srv_config_lock($self, 0);
+
     return 1;
 }
 
@@ -196,12 +212,14 @@ sub rpc_listenInterfacesSet {
     #
     my $os_type = $mgr->get_config('os','type');    
     if($os_type eq 'linux') {
-    	
+    	#srv_config_lock($self, 1);
     	die WSP::WspException->new( 'Not yet implemented', RPC_ERR_CODE_INTERNAL_ERROR );
+        #srv_config_lock($self, 0);
 
     } elsif ($os_type eq 'freebsd') {
-
+        #srv_config_lock($self, 1);
     	die WSP::WspException->new( 'Not yet implemented', RPC_ERR_CODE_INTERNAL_ERROR );
+        #srv_config_lock($self, 0);
 
     }
     return 1;
@@ -243,6 +261,36 @@ sub restrict_access {
     #
     my $ident = $self->{sec_mgr}->identify($ctx);
     $self->{sec_mgr}->pass($ident, $roles);    
+}
+
+sub srv_control_lock {
+    my ($self, $action) = @_;
+    my $mgr = $self->{mgr};
+    # 1=set, else unser
+    if($action == 1) {
+        my $v = $mgr->{wsp}->store_get('mutex_srvctl');
+        if($v) {
+            die WSP::WspException->new( 'Try again later, another process is locked this resource', RPC_ERR_CODE_OBJECT_LOCKED );
+        }
+        $mgr->{wsp}->store_put('mutex_srvctl', 1);
+    } else {
+        $mgr->{wsp}->store_put('mutex_srvctl', undef);    
+    }
+}
+
+sub srv_config_lock {
+    my ($self, $action) = @_;
+    my $mgr = $self->{mgr};
+    # 1=se, else unser
+    if($action == 1) {
+        my $v = $mgr->{wsp}->store_get('mutex_srvcfg');
+        if($v) {
+            die WSP::WspException->new( 'Try again later, another process is locked this resource', RPC_ERR_CODE_OBJECT_LOCKED );
+        }
+        $mgr->{wsp}->store_put('mutex_srvcfg', 1);
+    } else {
+        $mgr->{wsp}->store_put('mutex_srvcfg', undef);    
+    }
 }
 
 # ---------------------------------------------------------------------------------------------------------------------------------
