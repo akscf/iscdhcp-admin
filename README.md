@@ -15,7 +15,7 @@ Screenshots:
 
 ------------------------
 1. Installtion and setup   
-   Download the latest version: [isc-dhcp-manager-1.0.0-17052019](https://sourceforge.net/projects/cfdisfiles/files/isc-dhcp-manager/isc-dhcp-manager-1.0.0-17052019.tar.gz/download) 
+   Download the latest version: [isc-dhcp-manager-1.0.0-17052019](https://sourceforge.net/projects/cfdisfiles/files/isc-dhcp-manager/isc-dhcp-manager-1.0.0-17052019.tar.gz/download)  
    Unpack isc-dhcp-manager-x.x..tar.gz to /opt
  
    The configurations:  
