@@ -18,14 +18,13 @@ qx.Class.define("webapp.workplaces.administrator.pages.LeasesPage", {
         // Public
         //===========================================================================================================================================================================================
         doSelect:function () {
-
+            this.__doSearch(null, false);
         },
 
         //===========================================================================================================================================================================================
         // Private
         //===========================================================================================================================================================================================
         __initComponents:function () {
-            /*
             var toolbar = new org.cforge.qooxdoo.ui.Toolbar();
             toolbar.add(new org.cforge.qooxdoo.ui.ToolbarButton(null, this.tr('Refresh'), 'webapp/16x16/refresh.png', this, this.__doSearch));
             toolbar.addSeparator();
@@ -36,29 +35,28 @@ qx.Class.define("webapp.workplaces.administrator.pages.LeasesPage", {
             contextMenu.addSeparator();
             contextMenu.add(new org.cforge.qooxdoo.ui.MenuButton(this.tr('View details'), 'webapp/16x16/view.png', this, this.__doView));
             //
-            this.__table = new org.cforge.qooxdoo.ui.Table(["", "", this.tr("HW address"), this.tr("IP Address"), this.tr("Expiry"), this.tr("Info")]);
+            this.__table = new org.cforge.qooxdoo.ui.Table(["", "", this.tr("HW address"), this.tr("IP Address"), this.tr("Lease period"), this.tr("Name")]);
             this.__table.setUserConextMenu(contextMenu);
             this.__table.getSelectionModel().addListener('changeSelection', this.__onTableChangeSelection, this, false);
             this.__table.addListener('cellDbltap', this.__onTableCellDblTap, this, false);
             this.__table.addListener('contextmenu', function (evt) {
                 this.__table.showUserContextMenu(evt);
             }, this, false);
-            this.__table.getPaneScroller(0).addListener('changeScrollY', function (e) {
+            /*this.__table.getPaneScroller(0).addListener('changeScrollY', function (e) {
                 if (org.cforge.qooxdoo.ui.helper.Scroll.isNeedLoadNextPage(this.__table, e.getData()))
                     this.__doSearch(null, true);
-            }, this, false);
+            }, this, false);*/
             //
             var tcm = this.__table.getTableColumnModel();
             tcm.setDataCellRenderer(1, new qx.ui.table.cellrenderer.Image(16, 16));
-            tcm.getBehavior().setWidth(1, 36);      // eanble/disable
+            tcm.getBehavior().setWidth(1, 36);      // state
             tcm.getBehavior().setMinWidth(2, 350);  // mac
             tcm.getBehavior().setMinWidth(3, 150);  // ip
-            tcm.getBehavior().setMinWidth(4, 150);  // expiry
-            tcm.getBehavior().setMinWidth(5, 150);  // Info
+            tcm.getBehavior().setMinWidth(4, 150);  // pediod
+            tcm.getBehavior().setMinWidth(5, 150);  // name
             //---------------------------------------------------------------------------------------------------------------------------------
             this.add(toolbar, null);
             this.add(this.__table, {flex:1});
-            */
         },
 
         //=================================================================================================================================================================================================================
@@ -69,6 +67,16 @@ qx.Class.define("webapp.workplaces.administrator.pages.LeasesPage", {
                 selection = this.__table.getSelection();
                 if (!selection.entity) return;
             }
+            if (!this.__eventDetailsDialog) {
+                this.__eventDetailsDialog = new webapp.workplaces.administrator.dialogs.TextViewDialog();
+            }
+            var txt = "IP...........: " + selection.entity.ip + "\n" +
+                      "MAC..........: " + selection.entity.mac + "\n" +
+                      "Name.........: " + (selection.entity.name ? selection.entity.name : "") + "\n" +
+                      "State........: " + (selection.entity.state ? selection.entity.state : "")+ "\n" +
+                      "Start date...: " + selection.entity.startTime + "\n" +
+                      "End date.....: " + selection.entity.endTime + "\n";
+            this.__eventDetailsDialog.open(this.tr("Lease details"), txt);
         },
 
         __doSearch:function (e, continueSearch) {
@@ -79,7 +87,7 @@ qx.Class.define("webapp.workplaces.administrator.pages.LeasesPage", {
             }
             //
             var self = this;
-            org.cforge.dhcpmgr.services.DhcpServerManagementService.search(this.__fieldSearchText.getValue(), this.__filterSettings, function (result, exception) {
+            org.cforge.dhcpmgr.services.LeasesManagementService.search(this.__fieldSearchText.getValue(), this.__filterSettings, function (result, exception) {
                 if (!result) return;
                 //
                 var entity = null;
@@ -87,21 +95,22 @@ qx.Class.define("webapp.workplaces.administrator.pages.LeasesPage", {
                     entity = result[i];
                     self.__renderEntity('fill', {row:0, entity:entity});
                 }
-                org.cforge.qooxdoo.ui.helper.Scroll.updatePaginationSettings(self.__filterSettings, entity);
+                //org.cforge.qooxdoo.ui.helper.Scroll.updatePaginationSettings(self.__filterSettings, entity);
             });
         },
 
+        // todo: use OMAPI for it
         __doRefresh:function (e, selection) {
             if (!selection) {
                 selection = this.__table.getSelection();
                 if (!selection.entity) return;
             }
             var self = this;
-            org.cforge.dhcpmgr.services.DhcpServerManagementService.fetch(selection.entity.id, function (result, exception) {
+            /*org.cforge.dhcpmgr.services.DhcpServerManagementService.fetch(selection.entity.id, function (result, exception) {
                 if (exception) return;
                 if (result) self.__renderEntity('upd', {row:selection.row, entity:result});
                 else self.__renderEntity('del', selection);
-            });
+            });*/
         },
 
         //=================================================================================================================================================================================================================
@@ -129,9 +138,9 @@ qx.Class.define("webapp.workplaces.administrator.pages.LeasesPage", {
                 this.__table.deleteRow(row);
                 return
             }
-            var img = (entity.active ? this.__IMG_ACTIVE : this.__IMG_INACTIVE);
-            var info = "";
-            var cdata = [entity, img, entity.mac, entity.ip, entity.expiry, info];
+            var img = (entity.state == 'active' ? this.__IMG_ACTIVE : this.__IMG_INACTIVE);
+            var leasePeriod = entity.startTime + " - " + entity.endTime;
+            var cdata = [entity, img, entity.mac, entity.ip, leasePeriod, entity.name];
             //
             if ('add' == action) {
                 return this.__table.insertRow(cdata, 0, true);

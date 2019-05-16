@@ -53,7 +53,7 @@ sub start {
             $cfg->{'os'}->{'type'}                  = 'linux';  # freebsd 
 
             $cfg->{'dhcp'}->{'config_file'} 		= '/etc/dhcp/dhcpd.conf';
-            $cfg->{'dhcp'}->{'lease_file'} 			= '/var/lib/dhcp/dhcpd.leases';
+            $cfg->{'dhcp'}->{'leases_file'} 		= '/var/lib/dhcp/dhcpd.leases';
             $cfg->{'dhcp'}->{'log_file'} 			= '/var/log/syslog';
 
             $cfg->{'dhcp'}->{'cmd_start'} 			= '/etc/init.d/isc-dhcp-server start';            

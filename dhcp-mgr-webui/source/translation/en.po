@@ -44,6 +44,10 @@ msgstr ""
 msgid "Saving..."
 msgstr ""
 
+#: org/cforge/dhcpmgr/services/LeasesManagementService.js:16
+msgid "Searching..."
+msgstr ""
+
 #: org/cforge/qooxdoo/ui/form/FormContainer1.js:48
 #: org/cforge/qooxdoo/ui/form/FormContainer2.js:52
 msgid "Require field!"
@@ -345,35 +349,35 @@ msgstr ""
 msgid "Leases"
 msgstr ""
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:28
-#: webapp/workplaces/administrator/pages/LeasesPage.js:33
+#: webapp/workplaces/administrator/pages/LeasesPage.js:29
+#: webapp/workplaces/administrator/pages/LeasesPage.js:34
 #: webapp/workplaces/administrator/pages/LogsPage.js:28
 msgid "Refresh"
 msgstr ""
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:30
+#: webapp/workplaces/administrator/pages/LeasesPage.js:31
 #: webapp/workplaces/administrator/pages/LogsPage.js:30
 msgid "enter the text for search"
 msgstr ""
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:35
+#: webapp/workplaces/administrator/pages/LeasesPage.js:36
 msgid "View details"
 msgstr ""
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:37
-msgid "Expiry"
-msgstr ""
-
-#: webapp/workplaces/administrator/pages/LeasesPage.js:37
+#: webapp/workplaces/administrator/pages/LeasesPage.js:38
 msgid "HW address"
 msgstr ""
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:37
+#: webapp/workplaces/administrator/pages/LeasesPage.js:38
 msgid "IP Address"
 msgstr ""
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:37
-msgid "Info"
+#: webapp/workplaces/administrator/pages/LeasesPage.js:38
+msgid "Lease period"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/LeasesPage.js:38
+msgid "Name"
 msgstr ""
 
 #: webapp/workplaces/administrator/pages/LogsPage.js:9
@@ -391,3 +395,4 @@ msgstr ""
 #: webapp/workplaces/administrator/pages/LogsPage.js:62
 msgid "Record details"
 msgstr ""
+
