@@ -51,4 +51,5 @@ Screenshots:
 
 
   * LeasesManagementService
+     - search
 
