@@ -9,9 +9,12 @@ Basic features:
 
 ------------------------
 Screenshots:  
-<img width="320" height="200" src="https://github.com/akscf/isc-dhcp-manager/blob/master/sshots/ss1.png">
-<img width="320" height="200" src="https://github.com/akscf/isc-dhcp-manager/blob/master/sshots/ss2.png">
-<img width="320" height="200" src="https://github.com/akscf/isc-dhcp-manager/blob/master/sshots/ss3.png">
+<p align="center">
+ <img width="320" height="200" src="https://github.com/akscf/isc-dhcp-manager/blob/master/sshots/ss0.png">
+ <img width="320" height="200" src="https://github.com/akscf/isc-dhcp-manager/blob/master/sshots/ss1.png">
+ <img width="320" height="200" src="https://github.com/akscf/isc-dhcp-manager/blob/master/sshots/ss2.png">
+ <img width="320" height="200" src="https://github.com/akscf/isc-dhcp-manager/blob/master/sshots/ss3.png">
+</p>
 
 ------------------------
 1. Installtion and setup   
