@@ -1,4 +1,4 @@
-Simple web interface and json-rpc services for ISC DHCP Serevr written in Perl.  
+<b>Simple web interface and json-rpc services for ISC DHCP Serevr.</b>  
 
 <p align="center">
  <img width="320" height="200" src="https://github.com/akscf/isc-dhcp-manager/blob/master/sshots/ss0.png">
