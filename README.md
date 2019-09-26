@@ -11,7 +11,7 @@
 Changes log:  
 
 26.09.2019 [isc-dhcp-manager-1.0.0-26092019](https://sourceforge.net/projects/cfdisfiles/files/isc-dhcp-manager/isc-dhcp-manager-1.0.0-26092019.tar.gz/download)  
-    * fixed some bugs in UI (language change)
+    * fixed some bugs in UI (language change)  
     * fixed some bugs in backend (config)  
     + viewer UI  
 
