@@ -52,7 +52,7 @@ qx.Class.define("webapp.workplaces.administrator.pages.LeasesPage", {
             tcm.getBehavior().setWidth(1, 36);      // state
             tcm.getBehavior().setMinWidth(2, 350);  // mac
             tcm.getBehavior().setMinWidth(3, 150);  // ip
-            tcm.getBehavior().setMinWidth(4, 150);  // pediod
+            tcm.getBehavior().setMinWidth(4, 150);  // period
             tcm.getBehavior().setMinWidth(5, 150);  // name
             //---------------------------------------------------------------------------------------------------------------------------------
             this.add(toolbar, null);

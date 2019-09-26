@@ -64,7 +64,8 @@ qx.Class.define("org.cforge.qooxdoo.ui.form.FormContainer2", {
             var required = (field.__xformF1 && field.getRequired());
             //
             if (labelText) {
-                this.add(new qx.ui.basic.Label().set({value: labelText + ':', textColor: (required ? '#FF0000' : '#000000')}, null), {row: this.__currentRow, column: 0});
+                var l = new qx.ui.basic.Label().set({value: labelText, textColor: (required ? '#FF0000' : '#000000')}, null);
+                this.add(l, {row: this.__currentRow, column: 0});
             }
             //
             if (!buttons) {

@@ -69,7 +69,8 @@ qx.Class.define("org.cforge.qooxdoo.ui.form.FormContainer1", {
             //
             if (labelText) {
                 var box1 = new qx.ui.container.Composite(new qx.ui.layout.HBox().set({spacing: 1, alignX: 'left'}, null));
-                box1.add(new qx.ui.basic.Label().set({value: labelText + ':', textColor: (required ? this.__RERUIRE_COLOR : this.__OPTIONAL_COLOR)}, null), {flex: 1});
+                var l = new qx.ui.basic.Label().set({value: labelText, textColor: (required ? this.__RERUIRE_COLOR : this.__OPTIONAL_COLOR)}, null);
+                box1.add(l, {flex: 1});
                 this.add(box1, null);
             }
             // field + buttons
