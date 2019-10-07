@@ -1,5 +1,5 @@
 # ******************************************************************************************
-# DHCP server services
+# DHCP server service
 # 
 # @author AlexandrinK <aks@cforge.org>
 # ******************************************************************************************
@@ -118,12 +118,16 @@ sub rpc_serverGetStatus {
     	die WSP::WspException->new( 'Missing configuration property: dhcp.cmd_status', RPC_ERR_CODE_INTERNAL_ERROR );
     }
     my $st  = `$cmd`;
-    #    
+    # get daemon status  
     my @tt  = split('\n', $st);    
     foreach my $l (@tt) {
-		if($l =~ /Main PID\:\s(\d+)\s\((.*)\)$/) { # Main PID: 24534 (code=exited, status=1/FAILURE)
+		if($l =~ /Active:\s(.*)$/) {
+		   $status->{state} = $1;
+		   next;
+		}
+    	if($l =~ /Main PID\:\s(\d+)\s\((.*)\)$/) {
 			$status->{pid} = $1;
-			$status->{state} = $2;
+			$status->{state}=$2 unless($status->{state});
     		last;
     	}
 	}

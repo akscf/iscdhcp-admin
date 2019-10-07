@@ -41,8 +41,8 @@
         "LOCALES"       :[ "ru", "en", "de", "fr" ],
         "CACHE"         :"${TMPDIR}/qx${QOOXDOO_VERSION}/cache",
         "INCLUDE"       :["org.cforge.*", "webapp.*"],
-        "ROOT"          :"."
-//        "OPTIMIZE"      :["comments"]
+        "ROOT"          :".",
+        "OPTIMIZE"      :["comments"]
     },
 
     "jobs":{

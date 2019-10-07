@@ -1,7 +1,7 @@
 # *****************************************************************************************
 # Generic exception
 #
-# @author Alexandrin.K <aks@cforge.org>
+# @author AlexandrinK <aks@cforge.org>
 # *****************************************************************************************
 package WSP::WspException;
 use WSP::WspDefs qw (RPC_ERR_CODE_INTERNAL_ERROR);

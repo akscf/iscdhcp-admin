@@ -92,6 +92,7 @@ qx.Class.define("webapp.workplaces.administrator.pages.ConfigPage", {
             var self = this;
             if (confirmed) {
                 org.cforge.dhcpmgr.services.DhcpServerManagementService.serverStart(function (result, exception) {
+                    self.__doGetServerStatus(null);
                 });
             } else {
                 qx.core.Init.getApplication().stdDialogs().question(this.tr("Start server"), this.tr("Do you want to continue?"), [this.tr("Yes"), this.tr("No")], function (bid) {
@@ -104,6 +105,7 @@ qx.Class.define("webapp.workplaces.administrator.pages.ConfigPage", {
             var self = this;
             if (confirmed) {
                 org.cforge.dhcpmgr.services.DhcpServerManagementService.serverStop(function (result, exception) {
+                    self.__doGetServerStatus(null);
                 });
             } else {
                 qx.core.Init.getApplication().stdDialogs().question(this.tr("Stop server"), this.tr("Do you want to continue?"), [this.tr("Yes"), this.tr("No")], function (bid) {
@@ -116,6 +118,7 @@ qx.Class.define("webapp.workplaces.administrator.pages.ConfigPage", {
             var self = this;
             if (confirmed) {
                 org.cforge.dhcpmgr.services.DhcpServerManagementService.serverReload(function (result, exception) {
+                    self.__doGetServerStatus(null);
                 });
             } else {
                 qx.core.Init.getApplication().stdDialogs().question(this.tr("Reload config"), this.tr("Do you want to continue?"), [this.tr("Yes"), this.tr("No")], function (bid) {

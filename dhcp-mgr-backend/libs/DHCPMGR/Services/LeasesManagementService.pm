@@ -1,5 +1,5 @@
 # ******************************************************************************************
-# Leases DB services
+# Leases DB service
 #
 # @author AlexandrinK <aks@cforge.org>
 # ******************************************************************************************
@@ -17,6 +17,7 @@ use WSP::WspDefs qw(:ALL);
 use DHCPMGR::Defs qw(:ALL);
 use DHCPMGR::Models::LeaseEntry;
 
+
 # ---------------------------------------------------------------------------------------------------------------------------------
 sub new ($$;$) {
 	my ( $class, $mgr ) = @_;
@@ -24,7 +25,8 @@ sub new ($$;$) {
 		logger          => Log::Log4perl::get_logger(__PACKAGE__),
 		class_name      => $class,
 		mgr             => $mgr,
-        sec_mgr         => $mgr->{sec_mgr}
+        sec_mgr         => $mgr->{sec_mgr},
+        omapi_enabled	=> 1 
 	};
 	bless( $self, $class ); 
 	#
@@ -39,12 +41,13 @@ sub get_class_name {
 # ---------------------------------------------------------------------------------------------------------------------------------
 # public methods
 # ---------------------------------------------------------------------------------------------------------------------------------
+# searching by leasesdb
 sub rpc_search {
 	my ( $self, $sec_ctx, $filter, $settings) = @_;
 	my $mgr = $self->{mgr};
 	my $result = [];
 	#
-	$self->{logger}->debug("SEARCH, filter: ".$filter.", settings: ".Dumper($settings));
+	#$self->{logger}->debug("SEARCH, filter: ".$filter.", settings: ".Dumper($settings));
     #
     restrict_access($self, $sec_ctx, [ROLE_ADMIN, ROLE_VIEWER]);
     #
@@ -102,13 +105,64 @@ sub rpc_search {
         		push(@{$result}, $lease_entry);
         	}
 			$lease_fnd = 0;
-			#$self->{logger}->debug("ENTRY: ".Dumper($lease_entry));
         }
 	}
-	# remove tmp
 	unlink($tmp_file);
     #
     return $result;
+}
+
+sub rpc_get {
+	my ( $self, $sec_ctx, $entity) = @_;
+	#
+	restrict_access($self, $sec_ctx, [ROLE_ADMIN, ROLE_VIEWER]);
+	unless($self->{omapi_enabled}) {
+		die WSP::WspException->new( 'OMAPI unavailable', RPC_ERR_CODE_INTERNAL_ERROR );
+	}		
+	#
+	$self->{logger}->debug("LEASE NEW: ".Dumper($entity));
+}
+
+sub rpc_add {
+	my ( $self, $sec_ctx, $entity) = @_;
+	my $mgr = $self->{mgr};
+	#
+	restrict_access($self, $sec_ctx, [ROLE_ADMIN]);
+	unless($self->{omapi_enabled}) {
+		die WSP::WspException->new( 'OMAPI unavailable', RPC_ERR_CODE_INTERNAL_ERROR );
+	}
+	$self->{logger}->debug("LEASE NEW: ".Dumper($entity));
+	#
+	#
+	return $entity
+}
+
+sub rpc_update {
+	my ( $self, $sec_ctx, $entity) = @_;
+	my $mgr = $self->{mgr};
+	#
+	restrict_access($self, $sec_ctx, [ROLE_ADMIN]);
+	unless($self->{omapi_enabled}) {
+		die WSP::WspException->new( 'OMAPI unavailable', RPC_ERR_CODE_INTERNAL_ERROR );
+	}	
+	$self->{logger}->debug("LEASE UPDATE: ".Dumper($entity));
+	#
+	#
+	return $entity
+}
+
+sub rpc_delete {
+	my ( $self, $sec_ctx, $mac) = @_;
+	my $mgr = $self->{mgr};
+	#
+	restrict_access($self, $sec_ctx, [ROLE_ADMIN]);
+	unless($self->{omapi_enabled}) {
+		die WSP::WspException->new( 'OMAPI unavailable', RPC_ERR_CODE_INTERNAL_ERROR );
+	}	
+	#
+	$self->{logger}->debug("Leaase delete: ".$mac);
+	#
+	return 1;
 }
 
 # ---------------------------------------------------------------------------------------------------------------------------------
@@ -119,6 +173,15 @@ sub restrict_access {
     #
     my $ident = $self->{sec_mgr}->identify($ctx);
     $self->{sec_mgr}->pass($ident, $roles);    
+}
+
+sub om_exec {
+	my ( $self ) = @_;
+	my $mgr = $self->{mgr};
+	#
+	
+	#
+    return undef;
 }
 
 # ---------------------------------------------------------------------------------------------------------------------------------

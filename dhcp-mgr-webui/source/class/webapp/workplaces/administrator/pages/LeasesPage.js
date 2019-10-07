@@ -28,12 +28,20 @@ qx.Class.define("webapp.workplaces.administrator.pages.LeasesPage", {
             var toolbar = new org.cforge.qooxdoo.ui.Toolbar();
             toolbar.add(new org.cforge.qooxdoo.ui.ToolbarButton(null, this.tr('Refresh'), 'webapp/16x16/refresh.png', this, this.__doSearch));
             toolbar.addSeparator();
+            this.__buttonAdd = toolbar.add(new org.cforge.qooxdoo.ui.ToolbarButton(null, this.tr('Add'), 'webapp/16x16/add2.png', this, this.__doShowAddDialog));
+            this.__buttonEdit = toolbar.add(new org.cforge.qooxdoo.ui.ToolbarButton(null, this.tr('Edit'), 'webapp/16x16/edit.png', this, this.__doShowEditDialog));
+            this.__buttonDelete = toolbar.add(new org.cforge.qooxdoo.ui.ToolbarButton(null, this.tr('Delete'), 'webapp/16x16/delete2.png', this, this.__doDelete));
+            toolbar.addSeparator();
             this.__fieldSearchText = toolbar.addFlex(new org.cforge.qooxdoo.ui.ToolbarTextField(this.tr('enter the text for search'), this, this.__doSearch));
+            //-------------------------------------------------------------------------------------------------------------------
+            webapp.utils.WidgetHelper.widgetEnable(false, [this.__buttonEdit, this.__buttonDelete]);
             //-------------------------------------------------------------------------------------------------------------------
             var contextMenu = new org.cforge.qooxdoo.ui.PopupMenu();
             contextMenu.add(new org.cforge.qooxdoo.ui.MenuButton(this.tr('Refresh'), 'webapp/16x16/refresh.png', this, this.__doRefresh));
             contextMenu.addSeparator();
             contextMenu.add(new org.cforge.qooxdoo.ui.MenuButton(this.tr('View details'), 'webapp/16x16/view.png', this, this.__doView));
+            contextMenu.add(new org.cforge.qooxdoo.ui.MenuButton(this.tr('Edit'), 'webapp/16x16/edit.png', this, this.__doShowEditDialog));
+            contextMenu.add(new org.cforge.qooxdoo.ui.MenuButton(this.tr('Delete'), 'webapp/16x16/delete2.png', this, this.__doDelete));
             //
             this.__table = new org.cforge.qooxdoo.ui.Table(["", "", this.tr("HW address"), this.tr("IP Address"), this.tr("Lease period"), this.tr("Name")]);
             this.__table.setUserConextMenu(contextMenu);
@@ -77,6 +85,26 @@ qx.Class.define("webapp.workplaces.administrator.pages.LeasesPage", {
                       "Start date...: " + selection.entity.startTime + "\n" +
                       "End date.....: " + selection.entity.endTime + "\n";
             this.__eventDetailsDialog.open(this.tr("Lease details"), txt);
+        },
+
+        __doShowAddDialog:function () {
+        },
+
+        __doShowEditDialog:function (e, selection) {
+        },
+
+        __doDelete:function (e, selection, confirmed) {
+            if (!selection) {
+                selection = this.__table.getSelection();
+                if (!selection.entity) return;
+            }
+            var self = this;
+            if (confirmed) {
+            } else {
+                qx.core.Init.getApplication().stdDialogs().question(this.tr("Deleting"), this.tr("Do you want to continue?"), [this.tr("Yes"), this.tr("No")], function (bid) {
+                    if (bid == 1) self.__doDelete(null, selection, true);
+                });
+            }
         },
 
         __doSearch:function (e, continueSearch) {

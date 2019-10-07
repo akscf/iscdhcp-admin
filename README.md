@@ -72,7 +72,7 @@ Web services (json-rpc, http://127.0.0.1:8080/rpc ):
      logRead  
 
 
-  * LeasesManagementService
+  * LeasesManagementService  
      search
 
   * OmapiService

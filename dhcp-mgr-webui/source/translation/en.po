@@ -264,8 +264,52 @@ msgstr ""
 msgid "No suitable workspace!"
 msgstr ""
 
+#: webapp/workplaces/administrator/pages/LeasesPage.js:29
+#: webapp/workplaces/administrator/pages/LeasesPage.js:40
+#: webapp/workplaces/ViewerWorkplace.js:27
+#: webapp/workplaces/ViewerWorkplace.js:32
+#: webapp/workplaces/administrator/pages/LogsPage.js:28
+msgid "Refresh"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/LeasesPage.js:35
+#: webapp/workplaces/ViewerWorkplace.js:29
+#: webapp/workplaces/administrator/pages/LogsPage.js:30
+msgid "enter the text for search"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/LeasesPage.js:42
+#: webapp/workplaces/ViewerWorkplace.js:34
+msgid "View details"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/LeasesPage.js:46
+#: webapp/workplaces/ViewerWorkplace.js:36
+msgid "HW address"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/LeasesPage.js:46
+#: webapp/workplaces/ViewerWorkplace.js:36
+msgid "IP Address"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/LeasesPage.js:46
+#: webapp/workplaces/ViewerWorkplace.js:36
+msgid "Lease period"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/LeasesPage.js:46
+#: webapp/workplaces/ViewerWorkplace.js:36
+msgid "Name"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/LeasesPage.js:87
+#: webapp/workplaces/ViewerWorkplace.js:77
+msgid "Lease details"
+msgstr ""
+
 #: webapp/workplaces/administrator/commons/ConfigEditorWidget.js:30
-#: webapp/workplaces/administrator/pages/ConfigPage.js:121
+#: webapp/workplaces/administrator/pages/ConfigPage.js:124
 msgid "Reload config"
 msgstr ""
 
@@ -290,12 +334,12 @@ msgid "Server"
 msgstr ""
 
 #: webapp/workplaces/administrator/pages/ConfigPage.js:28
-#: webapp/workplaces/administrator/pages/ConfigPage.js:97
+#: webapp/workplaces/administrator/pages/ConfigPage.js:98
 msgid "Start server"
 msgstr ""
 
 #: webapp/workplaces/administrator/pages/ConfigPage.js:29
-#: webapp/workplaces/administrator/pages/ConfigPage.js:109
+#: webapp/workplaces/administrator/pages/ConfigPage.js:111
 msgid "Stop server"
 msgstr ""
 
@@ -327,21 +371,24 @@ msgstr ""
 msgid "PID"
 msgstr ""
 
-#: webapp/workplaces/administrator/pages/ConfigPage.js:97
-#: webapp/workplaces/administrator/pages/ConfigPage.js:109
-#: webapp/workplaces/administrator/pages/ConfigPage.js:121
+#: webapp/workplaces/administrator/pages/LeasesPage.js:104
+#: webapp/workplaces/administrator/pages/ConfigPage.js:98
+#: webapp/workplaces/administrator/pages/ConfigPage.js:111
+#: webapp/workplaces/administrator/pages/ConfigPage.js:124
 msgid "Do you want to continue?"
 msgstr ""
 
-#: webapp/workplaces/administrator/pages/ConfigPage.js:97
-#: webapp/workplaces/administrator/pages/ConfigPage.js:109
-#: webapp/workplaces/administrator/pages/ConfigPage.js:121
+#: webapp/workplaces/administrator/pages/LeasesPage.js:104
+#: webapp/workplaces/administrator/pages/ConfigPage.js:98
+#: webapp/workplaces/administrator/pages/ConfigPage.js:111
+#: webapp/workplaces/administrator/pages/ConfigPage.js:124
 msgid "No"
 msgstr ""
 
-#: webapp/workplaces/administrator/pages/ConfigPage.js:97
-#: webapp/workplaces/administrator/pages/ConfigPage.js:109
-#: webapp/workplaces/administrator/pages/ConfigPage.js:121
+#: webapp/workplaces/administrator/pages/LeasesPage.js:104
+#: webapp/workplaces/administrator/pages/ConfigPage.js:98
+#: webapp/workplaces/administrator/pages/ConfigPage.js:111
+#: webapp/workplaces/administrator/pages/ConfigPage.js:124
 msgid "Yes"
 msgstr ""
 
@@ -349,35 +396,22 @@ msgstr ""
 msgid "Leases"
 msgstr ""
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:29
-#: webapp/workplaces/administrator/pages/LeasesPage.js:34
-#: webapp/workplaces/administrator/pages/LogsPage.js:28
-msgid "Refresh"
-msgstr ""
-
 #: webapp/workplaces/administrator/pages/LeasesPage.js:31
-#: webapp/workplaces/administrator/pages/LogsPage.js:30
-msgid "enter the text for search"
+msgid "Add"
 msgstr ""
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:36
-msgid "View details"
+#: webapp/workplaces/administrator/pages/LeasesPage.js:32
+#: webapp/workplaces/administrator/pages/LeasesPage.js:43
+msgid "Edit"
 msgstr ""
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:38
-msgid "HW address"
+#: webapp/workplaces/administrator/pages/LeasesPage.js:33
+#: webapp/workplaces/administrator/pages/LeasesPage.js:44
+msgid "Delete"
 msgstr ""
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:38
-msgid "IP Address"
-msgstr ""
-
-#: webapp/workplaces/administrator/pages/LeasesPage.js:38
-msgid "Lease period"
-msgstr ""
-
-#: webapp/workplaces/administrator/pages/LeasesPage.js:38
-msgid "Name"
+#: webapp/workplaces/administrator/pages/LeasesPage.js:104
+msgid "Deleting"
 msgstr ""
 
 #: webapp/workplaces/administrator/pages/LogsPage.js:9
@@ -395,4 +429,3 @@ msgstr ""
 #: webapp/workplaces/administrator/pages/LogsPage.js:62
 msgid "Record details"
 msgstr ""
-
