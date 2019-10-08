@@ -26,7 +26,7 @@ sub new ($$;$) {
 		class_name      => $class,
 		mgr             => $mgr,
         sec_mgr         => $mgr->{sec_mgr},
-        omapi_enabled	=> 1 
+        om_mgr          => $mgr->{om_mgr}
 	};
 	bless( $self, $class ); 
 	#
@@ -73,11 +73,23 @@ sub rpc_search {
 	my $use_filter = ($filter && length($filter) > 3);
 	#
 	foreach my $line (@lines) {
+		if ($line=~/host\s(.*?)\s.*/) {
+			$lease_entry = DHCPMGR::Models::LeaseEntry->new();
+			$lease_entry->{name} = $1;
+			$lease_entry->{type} = 'host';
+			$lease_entry->{state} = 'active';
+			$lease_fnd = 1;
+			$lease_count++;			
+		}
         if ($line=~/lease\s(\d+\.\d+\.\d+\.\d+)/) {
         	$lease_entry = DHCPMGR::Models::LeaseEntry->new();
+			$lease_entry->{type} = 'lease';
 			$lease_entry->{ip} = $1;
 			$lease_fnd = 1;
 			$lease_count++;
+        }
+        if ($lease_fnd && $line =~/fixed-address\s(.*?)\;/) {
+        	$lease_entry->{ip} = $1;
         }
         if ($lease_fnd && $line =~/hardware\sethernet\s(.*?)\;/) {
         	$lease_entry->{mac} = $1;
@@ -91,10 +103,8 @@ sub rpc_search {
         if ($lease_fnd && $line=~/ends\s\d\s(\d+\/\d+\/\d+\s\d+:\d+:\d+)\;/) {
         	$lease_entry->{endTime} = $1;
         }
-        if ($lease_fnd) {
-			if ($line=~/^\s+binding\sstate\s(.*?)\;/){
-				$lease_entry->{state} = $1;
-			}
+        if ($lease_fnd && $line=~/^\s+binding\sstate\s(.*?)\;/) {
+			$lease_entry->{state} = $1;
         }
         if ($lease_fnd && $line=~/^}/){
         	if($use_filter) {
@@ -112,57 +122,40 @@ sub rpc_search {
     return $result;
 }
 
-sub rpc_get {
-	my ( $self, $sec_ctx, $entity) = @_;
-	#
-	restrict_access($self, $sec_ctx, [ROLE_ADMIN, ROLE_VIEWER]);
-	unless($self->{omapi_enabled}) {
-		die WSP::WspException->new( 'OMAPI unavailable', RPC_ERR_CODE_INTERNAL_ERROR );
-	}		
-	#
-	$self->{logger}->debug("LEASE NEW: ".Dumper($entity));
-}
-
 sub rpc_add {
 	my ( $self, $sec_ctx, $entity) = @_;
-	my $mgr = $self->{mgr};
+	my $om = $self->{om_mgr};
 	#
 	restrict_access($self, $sec_ctx, [ROLE_ADMIN]);
-	unless($self->{omapi_enabled}) {
-		die WSP::WspException->new( 'OMAPI unavailable', RPC_ERR_CODE_INTERNAL_ERROR );
-	}
-	$self->{logger}->debug("LEASE NEW: ".Dumper($entity));
 	#
-	#
-	return $entity
+	return $om->obj_create($entity);
 }
 
 sub rpc_update {
 	my ( $self, $sec_ctx, $entity) = @_;
-	my $mgr = $self->{mgr};
+	my $om = $self->{om_mgr};
 	#
 	restrict_access($self, $sec_ctx, [ROLE_ADMIN]);
-	unless($self->{omapi_enabled}) {
-		die WSP::WspException->new( 'OMAPI unavailable', RPC_ERR_CODE_INTERNAL_ERROR );
-	}	
-	$self->{logger}->debug("LEASE UPDATE: ".Dumper($entity));
 	#
+	return $om->obj_update($entity);
+}
+
+sub rpc_get {
+	my ( $self, $sec_ctx, $mac) = @_;
+	my $om = $self->{om_mgr};
 	#
-	return $entity
+	restrict_access($self, $sec_ctx, [ROLE_ADMIN, ROLE_VIEWER]);	
+	#
+	return $om->obj_get($mac);
 }
 
 sub rpc_delete {
 	my ( $self, $sec_ctx, $mac) = @_;
-	my $mgr = $self->{mgr};
+	my $om = $self->{om_mgr};
 	#
 	restrict_access($self, $sec_ctx, [ROLE_ADMIN]);
-	unless($self->{omapi_enabled}) {
-		die WSP::WspException->new( 'OMAPI unavailable', RPC_ERR_CODE_INTERNAL_ERROR );
-	}	
 	#
-	$self->{logger}->debug("Leaase delete: ".$mac);
-	#
-	return 1;
+	return $om->obj_delete($mac);
 }
 
 # ---------------------------------------------------------------------------------------------------------------------------------
@@ -173,15 +166,6 @@ sub restrict_access {
     #
     my $ident = $self->{sec_mgr}->identify($ctx);
     $self->{sec_mgr}->pass($ident, $roles);    
-}
-
-sub om_exec {
-	my ( $self ) = @_;
-	my $mgr = $self->{mgr};
-	#
-	
-	#
-    return undef;
 }
 
 # ---------------------------------------------------------------------------------------------------------------------------------

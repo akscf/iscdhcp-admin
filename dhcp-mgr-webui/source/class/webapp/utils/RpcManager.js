@@ -48,20 +48,18 @@ qx.Class.define("webapp.utils.RpcManager", {
                 if (exception) {
                     if (exception.hasOwnProperty('rpcdetails')) {
                         var rpcfault = exception.rpcdetails;
-                        sessionExpire = (rpcfault.origin == 2 && rpcfault.code == 2001);
+                        sessionExpire = (rpcfault.origin == 2 && rpcfault.code == 1007);
                     } else if (exception.hasOwnProperty('origin') && exception.hasOwnProperty('code')) {
-                        sessionExpire = (exception.origin == 2 && exception.code == 2001);
+                        sessionExpire = (exception.origin == 2 && exception.code == 1007);
                     }
                 }
                 if (sessionExpire) {
-                    if (showIndicator)
-                        self._indicatorHide();
+                    if (showIndicator) self._indicatorHide();
                     self.__sessionExpireDialog(self.tr("Authorization failed"), self.tr("Session is outdated!"));
                     return;
                 }
                 if (catchException && exception != null) {
-                    if (showIndicator)
-                        self._indicatorHide();
+                    if (showIndicator) self._indicatorHide();
                     qx.core.Init.getApplication().stdDialogs().exception(serviceName, methodName, exception);
                     return;
                 }
@@ -73,8 +71,7 @@ qx.Class.define("webapp.utils.RpcManager", {
                 } catch (thr) {
                     qx.core.Init.getApplication().stdDialogs().exception(self.classname, serviceName + '::' + methodName, thr);
                 } finally {
-                    if (showIndicator)
-                        self._indicatorHide();
+                    if (showIndicator) self._indicatorHide();
                 }
             };
             // make args

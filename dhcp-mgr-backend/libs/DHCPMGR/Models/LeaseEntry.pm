@@ -12,6 +12,7 @@ sub new ($$) {
         my ($class, %args) = @_;
         my %t = (
                 class           => MODEL_NAME,
+                type			=> undef,
                 name            => undef,
                 ip              => undef,
                 mac             => undef,
@@ -26,6 +27,12 @@ sub new ($$) {
 sub get_class_name {
         my ($self) = @_;
         return $self->{class};
+}
+
+sub type {
+        my ($self, $val) = @_;
+        return $self->{type} unless(defined($val));
+        $self->{type} = $val;
 }
 
 sub name {

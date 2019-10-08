@@ -247,10 +247,11 @@ sub rpc_logRead {
     #
     my $bw = File::ReadBackwards->new( $log_file ) || die WSP::WspException->new( "Can't read logfile: $!", RPC_ERR_CODE_NOT_FOUND ); 
   	my $ofs = ($settings && $settings->offset() ? $settings->offset() : 0);
-    my $count = ($settings && $settings->count() ? $settings->count() : 100);
+    my $count = ($settings && $settings->count() ? $settings->count() : 100);    
     #
 	while(defined(my $l = $bw->readline())) {
 		$count-- if($count >= 0);
+		last unless($count);
 		push(@{$result}, $l);
 	}
     #

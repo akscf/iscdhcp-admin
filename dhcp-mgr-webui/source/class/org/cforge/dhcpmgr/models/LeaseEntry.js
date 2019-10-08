@@ -7,6 +7,7 @@ qx.Class.define("org.cforge.dhcpmgr.models.LeaseEntry", {
     construct: function () {
         this.setClass('DHCPMGR.Models.LeaseEntry');
         this.set({
+            type        : null,
             name        : null,
             ip          : null,
             mac         : null,
@@ -18,6 +19,7 @@ qx.Class.define("org.cforge.dhcpmgr.models.LeaseEntry", {
     //--------------------------------------------------------------------------------------
     properties: {
         'class'         : {},
+        type            : {},
         name            : {},
         ip              : {},
         mac             : {},

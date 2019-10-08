@@ -40,10 +40,11 @@ qx.Class.define("webapp.workplaces.administrator.pages.LeasesPage", {
             contextMenu.add(new org.cforge.qooxdoo.ui.MenuButton(this.tr('Refresh'), 'webapp/16x16/refresh.png', this, this.__doRefresh));
             contextMenu.addSeparator();
             contextMenu.add(new org.cforge.qooxdoo.ui.MenuButton(this.tr('View details'), 'webapp/16x16/view.png', this, this.__doView));
+            contextMenu.addSeparator();
             contextMenu.add(new org.cforge.qooxdoo.ui.MenuButton(this.tr('Edit'), 'webapp/16x16/edit.png', this, this.__doShowEditDialog));
             contextMenu.add(new org.cforge.qooxdoo.ui.MenuButton(this.tr('Delete'), 'webapp/16x16/delete2.png', this, this.__doDelete));
             //
-            this.__table = new org.cforge.qooxdoo.ui.Table(["", "", this.tr("HW address"), this.tr("IP Address"), this.tr("Lease period"), this.tr("Name")]);
+            this.__table = new org.cforge.qooxdoo.ui.Table(["", "", this.tr("Type"), this.tr("HW address"), this.tr("IP Address"), this.tr("Lease period"), this.tr("Name")]);
             this.__table.setUserConextMenu(contextMenu);
             this.__table.getSelectionModel().addListener('changeSelection', this.__onTableChangeSelection, this, false);
             this.__table.addListener('cellDbltap', this.__onTableCellDblTap, this, false);
@@ -58,10 +59,11 @@ qx.Class.define("webapp.workplaces.administrator.pages.LeasesPage", {
             var tcm = this.__table.getTableColumnModel();
             tcm.setDataCellRenderer(1, new qx.ui.table.cellrenderer.Image(16, 16));
             tcm.getBehavior().setWidth(1, 36);      // state
-            tcm.getBehavior().setMinWidth(2, 350);  // mac
-            tcm.getBehavior().setMinWidth(3, 150);  // ip
-            tcm.getBehavior().setMinWidth(4, 150);  // period
-            tcm.getBehavior().setMinWidth(5, 150);  // name
+            tcm.getBehavior().setWidth(2, 100);     // type
+            tcm.getBehavior().setMinWidth(3, 350);  // mac
+            tcm.getBehavior().setMinWidth(4, 150);  // ip
+            tcm.getBehavior().setMinWidth(5, 150);  // period
+            tcm.getBehavior().setMinWidth(6, 150);  // name
             //---------------------------------------------------------------------------------------------------------------------------------
             this.add(toolbar, null);
             this.add(this.__table, {flex:1});
@@ -79,18 +81,37 @@ qx.Class.define("webapp.workplaces.administrator.pages.LeasesPage", {
                 this.__eventDetailsDialog = new webapp.workplaces.administrator.dialogs.TextViewDialog();
             }
             var txt = "IP...........: " + selection.entity.ip + "\n" +
+                      "Type.........: " + selection.entity.type + "\n" +
                       "MAC..........: " + selection.entity.mac + "\n" +
                       "Name.........: " + (selection.entity.name ? selection.entity.name : "") + "\n" +
                       "State........: " + (selection.entity.state ? selection.entity.state : "")+ "\n" +
-                      "Start date...: " + selection.entity.startTime + "\n" +
-                      "End date.....: " + selection.entity.endTime + "\n";
+                      "Start date...: " + (selection.entity.startTime ? selection.entity.startTime : "") + "\n" +
+                      "End date.....: " + (selection.entity.endTime ? selection.entity.endTime : "") + "\n";
             this.__eventDetailsDialog.open(this.tr("Lease details"), txt);
         },
 
         __doShowAddDialog:function () {
+            if (!this.__addDialog) {
+                this.__addDialog = new webapp.workplaces.administrator.dialogs.LeaseAddDialog();
+                this.__addDialog.addListener("closeApprove", function (dataEvent) {
+                    this.__renderEntity('add', dataEvent.getData());
+                }, this, false);
+            }
+            this.__addDialog.open();
         },
 
         __doShowEditDialog:function (e, selection) {
+            if (!selection) {
+                selection = this.__table.getSelection();
+                if (!selection.entity) return;
+            }
+            if (!this.__editDialog) {
+                this.__editDialog = new webapp.workplaces.administrator.dialogs.LeaseEditDialog();
+                this.__editDialog.addListener("closeApprove", function (dataEvent) {
+                    this.__renderEntity('upd', dataEvent.getData());
+                }, this, false);
+            }
+            this.__editDialog.open(selection);
         },
 
         __doDelete:function (e, selection, confirmed) {
@@ -100,6 +121,9 @@ qx.Class.define("webapp.workplaces.administrator.pages.LeasesPage", {
             }
             var self = this;
             if (confirmed) {
+                org.cforge.dhcpmgr.services.LeasesManagementService.remove(selection.entity.mac, function (result, exception) {
+                    self.__renderEntity('del', selection);
+                });
             } else {
                 qx.core.Init.getApplication().stdDialogs().question(this.tr("Deleting"), this.tr("Do you want to continue?"), [this.tr("Yes"), this.tr("No")], function (bid) {
                     if (bid == 1) self.__doDelete(null, selection, true);
@@ -127,25 +151,28 @@ qx.Class.define("webapp.workplaces.administrator.pages.LeasesPage", {
             });
         },
 
-        // todo: use OMAPI for it
         __doRefresh:function (e, selection) {
             if (!selection) {
                 selection = this.__table.getSelection();
                 if (!selection.entity) return;
             }
             var self = this;
-            /*org.cforge.dhcpmgr.services.DhcpServerManagementService.fetch(selection.entity.id, function (result, exception) {
+            org.cforge.dhcpmgr.services.LeasesManagementService.fetch(selection.entity.mac, function (result, exception) {
                 if (exception) return;
                 if (result) self.__renderEntity('upd', {row:selection.row, entity:result});
                 else self.__renderEntity('del', selection);
-            });*/
+            });
         },
 
         //=================================================================================================================================================================================================================
         // Events
         //=================================================================================================================================================================================================================
         __onTableChangeSelection:function (e) {
-            var t = !(this.__table.getSelectionModel().isSelectionEmpty());
+            var selection = this.__table.getSelection();
+            var t = selection && selection.entity;
+            var th = (t && selection.entity.type == 'host');
+            this.__buttonEdit.setEnabled(th);
+            this.__buttonDelete.setEnabled(th);
         },
 
         __onTableCellDblTap:function (cellEvent) {
@@ -167,8 +194,8 @@ qx.Class.define("webapp.workplaces.administrator.pages.LeasesPage", {
                 return
             }
             var img = (entity.state == 'active' ? this.__IMG_ACTIVE : this.__IMG_INACTIVE);
-            var leasePeriod = entity.startTime + " - " + entity.endTime;
-            var cdata = [entity, img, entity.mac, entity.ip, leasePeriod, entity.name];
+            var leasePeriod = (entity.type == 'lease' ? (entity.startTime + " - " + entity.endTime) : "");
+            var cdata = [entity, img, entity.type, entity.mac, entity.ip, leasePeriod, entity.name];
             //
             if ('add' == action) {
                 return this.__table.insertRow(cdata, 0, true);

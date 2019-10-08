@@ -33,7 +33,7 @@ qx.Class.define("webapp.workplaces.ViewerWorkplace", {
             contextMenu.addSeparator();
             contextMenu.add(new org.cforge.qooxdoo.ui.MenuButton(this.tr('View details'), 'webapp/16x16/view.png', this, this.__doView));
             //
-            this.__table = new org.cforge.qooxdoo.ui.Table(["", "", this.tr("HW address"), this.tr("IP Address"), this.tr("Lease period"), this.tr("Name")]);
+            this.__table = new org.cforge.qooxdoo.ui.Table(["", "", this.tr("Type"), this.tr("HW address"), this.tr("IP Address"), this.tr("Lease period"), this.tr("Name")]);
             this.__table.setUserConextMenu(contextMenu);
             this.__table.getSelectionModel().addListener('changeSelection', this.__onTableChangeSelection, this, false);
             this.__table.addListener('cellDbltap', this.__onTableCellDblTap, this, false);
@@ -44,10 +44,11 @@ qx.Class.define("webapp.workplaces.ViewerWorkplace", {
             var tcm = this.__table.getTableColumnModel();
             tcm.setDataCellRenderer(1, new qx.ui.table.cellrenderer.Image(16, 16));
             tcm.getBehavior().setWidth(1, 36);      // state
-            tcm.getBehavior().setMinWidth(2, 350);  // mac
-            tcm.getBehavior().setMinWidth(3, 150);  // ip
-            tcm.getBehavior().setMinWidth(4, 150);  // period
-            tcm.getBehavior().setMinWidth(5, 150);  // name
+            tcm.getBehavior().setWidth(2, 100);     // type
+            tcm.getBehavior().setMinWidth(3, 350);  // mac
+            tcm.getBehavior().setMinWidth(4, 150);  // ip
+            tcm.getBehavior().setMinWidth(5, 150);  // period
+            tcm.getBehavior().setMinWidth(6, 150);  // name
             //---------------------------------------------------------------------------------------------------------------------------------
             this.add(toolbar, null);
             this.add(this.__table, {flex:1});
@@ -67,13 +68,13 @@ qx.Class.define("webapp.workplaces.ViewerWorkplace", {
             if (!this.__eventDetailsDialog) {
                 this.__eventDetailsDialog = new webapp.workplaces.administrator.dialogs.TextViewDialog();
             }
-            var txt =
-                "IP...........: " + selection.entity.ip + "\n" +
+            var txt = "IP...........: " + selection.entity.ip + "\n" +
+                "Type.........: " + selection.entity.type + "\n" +
                 "MAC..........: " + selection.entity.mac + "\n" +
                 "Name.........: " + (selection.entity.name ? selection.entity.name : "") + "\n" +
                 "State........: " + (selection.entity.state ? selection.entity.state : "")+ "\n" +
-                "Start date...: " + selection.entity.startTime + "\n" +
-                "End date.....: " + selection.entity.endTime + "\n";
+                "Start date...: " + (selection.entity.startTime ? selection.entity.startTime : "") + "\n" +
+                "End date.....: " + (selection.entity.endTime ? selection.entity.endTime : "") + "\n";
             this.__eventDetailsDialog.open(this.tr("Lease details"), txt);
         },
 
@@ -103,6 +104,11 @@ qx.Class.define("webapp.workplaces.ViewerWorkplace", {
                 if (!selection.entity) return;
             }
             var self = this;
+            org.cforge.dhcpmgr.services.LeasesManagementService.fetch(selection.entity.mac, function (result, exception) {
+                if (exception) return;
+                if (result) self.__renderEntity('upd', {row:selection.row, entity:result});
+                else self.__renderEntity('del', selection);
+            });
         },
 
         //=================================================================================================================================================================================================================
@@ -131,8 +137,8 @@ qx.Class.define("webapp.workplaces.ViewerWorkplace", {
                 return
             }
             var img = (entity.state == 'active' ? this.__IMG_ACTIVE : this.__IMG_INACTIVE);
-            var leasePeriod = entity.startTime + " - " + entity.endTime;
-            var cdata = [entity, img, entity.mac, entity.ip, leasePeriod, entity.name];
+            var leasePeriod = (entity.type == 'lease' ? (entity.startTime + " - " + entity.endTime) : "");
+            var cdata = [entity, img, entity.type, entity.mac, entity.ip, leasePeriod, entity.name];
             //
             if ('add' == action) {
                 return this.__table.insertRow(cdata, 0, true);

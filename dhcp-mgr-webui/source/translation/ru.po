@@ -31,6 +31,7 @@ msgstr "Остановка..."
 msgid "Reloading..."
 msgstr "перезагрузка..."
 
+#: org/cforge/dhcpmgr/services/LeasesManagementService.js:52
 #: org/cforge/dhcpmgr/services/DhcpServerManagementService.js:49
 #: org/cforge/dhcpmgr/services/DhcpServerManagementService.js:60
 #: org/cforge/dhcpmgr/services/DhcpServerManagementService.js:82
@@ -45,6 +46,18 @@ msgid "Saving..."
 msgstr "Сохранение..."
 
 #: org/cforge/dhcpmgr/services/LeasesManagementService.js:16
+msgid "Adding..."
+msgstr ""
+
+#: org/cforge/dhcpmgr/services/LeasesManagementService.js:28
+msgid "Saving changes..."
+msgstr ""
+
+#: org/cforge/dhcpmgr/services/LeasesManagementService.js:40
+msgid "Deleting..."
+msgstr ""
+
+#: org/cforge/dhcpmgr/services/LeasesManagementService.js:64
 msgid "Searching..."
 msgstr ""
 
@@ -208,7 +221,7 @@ msgstr "Загрузка..."
 msgid "Response is null"
 msgstr "Пустой ответ!"
 
-#: webapp/utils/RpcManager.js:59 webapp/dialogs/template/UploadDialog.js:85
+#: webapp/utils/RpcManager.js:58 webapp/dialogs/template/UploadDialog.js:85
 msgid "Session is outdated!"
 msgstr "Сессия устарела!"
 
@@ -216,7 +229,7 @@ msgstr "Сессия устарела!"
 msgid "Upload failed"
 msgstr "Загрузка не удалась"
 
-#: webapp/utils/RpcManager.js:59
+#: webapp/utils/RpcManager.js:58
 msgid "Authorization failed"
 msgstr "Авторизация не удалась"
 
@@ -283,28 +296,35 @@ msgstr "введите текст для поиска"
 msgid "View details"
 msgstr "Посмотреть подробности"
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:46
+#: webapp/workplaces/administrator/pages/LeasesPage.js:47
+#: webapp/workplaces/administrator/dialogs/LeaseAddDialog.js:39
 #: webapp/workplaces/ViewerWorkplace.js:36
+#: webapp/workplaces/administrator/dialogs/LeaseEditDialog.js:43
 msgid "HW address"
 msgstr "HW Адрес"
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:46
+#: webapp/workplaces/administrator/pages/LeasesPage.js:47
 #: webapp/workplaces/ViewerWorkplace.js:36
 msgid "IP Address"
 msgstr "IP Адрес"
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:46
+#: webapp/workplaces/administrator/pages/LeasesPage.js:47
 #: webapp/workplaces/ViewerWorkplace.js:36
 msgid "Lease period"
 msgstr "Период аренды"
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:46
+#: webapp/workplaces/administrator/pages/LeasesPage.js:47
 #: webapp/workplaces/ViewerWorkplace.js:36
 msgid "Name"
 msgstr "Тия"
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:87
-#: webapp/workplaces/ViewerWorkplace.js:77
+#: webapp/workplaces/administrator/pages/LeasesPage.js:47
+#: webapp/workplaces/ViewerWorkplace.js:36
+msgid "Type"
+msgstr "Тип"
+
+#: webapp/workplaces/administrator/pages/LeasesPage.js:90
+#: webapp/workplaces/ViewerWorkplace.js:78
 msgid "Lease details"
 msgstr "Подробности"
 
@@ -328,6 +348,38 @@ msgstr "введите текст для поиска"
 #: webapp/workplaces/administrator/commons/ConfigEditorWidget.js:42
 msgid "Find"
 msgstr "Искать"
+
+#: webapp/workplaces/administrator/dialogs/LeaseAddDialog.js:9
+msgid "Adding a new entry"
+msgstr ""
+
+#: webapp/workplaces/administrator/dialogs/LeaseAddDialog.js:37
+#: webapp/workplaces/administrator/dialogs/LeaseEditDialog.js:41
+msgid "Host name"
+msgstr ""
+
+#: webapp/workplaces/administrator/dialogs/LeaseAddDialog.js:38
+#: webapp/workplaces/administrator/dialogs/LeaseEditDialog.js:42
+msgid "IP address"
+msgstr ""
+
+#: webapp/workplaces/administrator/pages/LeasesPage.js:31
+#: webapp/workplaces/administrator/dialogs/LeaseAddDialog.js:41
+msgid "Add"
+msgstr "Добавить"
+
+#: webapp/workplaces/administrator/dialogs/LeaseAddDialog.js:42
+#: webapp/workplaces/administrator/dialogs/LeaseEditDialog.js:46
+msgid "Cancel"
+msgstr ""
+
+#: webapp/workplaces/administrator/dialogs/LeaseEditDialog.js:23
+msgid "Editing entry: %1"
+msgstr ""
+
+#: webapp/workplaces/administrator/dialogs/LeaseEditDialog.js:45
+msgid "Apply"
+msgstr ""
 
 #: webapp/workplaces/administrator/pages/ConfigPage.js:9
 msgid "Server"
@@ -371,21 +423,21 @@ msgstr "Состояние"
 msgid "PID"
 msgstr ""
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:104
+#: webapp/workplaces/administrator/pages/LeasesPage.js:125
 #: webapp/workplaces/administrator/pages/ConfigPage.js:98
 #: webapp/workplaces/administrator/pages/ConfigPage.js:111
 #: webapp/workplaces/administrator/pages/ConfigPage.js:124
 msgid "Do you want to continue?"
 msgstr "Хотите продолжить?"
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:104
+#: webapp/workplaces/administrator/pages/LeasesPage.js:125
 #: webapp/workplaces/administrator/pages/ConfigPage.js:98
 #: webapp/workplaces/administrator/pages/ConfigPage.js:111
 #: webapp/workplaces/administrator/pages/ConfigPage.js:124
 msgid "No"
 msgstr "Нет"
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:104
+#: webapp/workplaces/administrator/pages/LeasesPage.js:125
 #: webapp/workplaces/administrator/pages/ConfigPage.js:98
 #: webapp/workplaces/administrator/pages/ConfigPage.js:111
 #: webapp/workplaces/administrator/pages/ConfigPage.js:124
@@ -396,21 +448,17 @@ msgstr "Да"
 msgid "Leases"
 msgstr "Аренда"
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:31
-msgid "Add"
-msgstr "Добавить"
-
 #: webapp/workplaces/administrator/pages/LeasesPage.js:32
-#: webapp/workplaces/administrator/pages/LeasesPage.js:43
+#: webapp/workplaces/administrator/pages/LeasesPage.js:44
 msgid "Edit"
 msgstr "Редактировать"
 
 #: webapp/workplaces/administrator/pages/LeasesPage.js:33
-#: webapp/workplaces/administrator/pages/LeasesPage.js:44
+#: webapp/workplaces/administrator/pages/LeasesPage.js:45
 msgid "Delete"
 msgstr "Удалить"
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:104
+#: webapp/workplaces/administrator/pages/LeasesPage.js:125
 msgid "Deleting"
 msgstr "Удаление"
 

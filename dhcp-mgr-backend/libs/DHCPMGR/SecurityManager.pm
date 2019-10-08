@@ -154,8 +154,14 @@ sub pass {
 	unless($roles) {
 		die WSP::WspException->new( 'Unauthorized', RPC_ERR_CODE_UNAUTHORIZED_ACCESS );
 	}
-	my $pass = 0;
+	#
 	my $urole = $user_identity->role();
+	my $pass = 0;
+	
+	if($urole eq ROLE_ANONYMOUS) {
+		die WSP::WspException->new( 'Unauthorized', RPC_ERR_CODE_UNAUTHORIZED_ACCESS );
+	}
+	
 	if (ref($roles) eq 'SCALAR') {
 		$pass = 1 if ($urole eq $roles);
 	} else {

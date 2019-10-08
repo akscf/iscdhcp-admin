@@ -12,6 +12,7 @@ use WSP::WspException;
 use WSP::WspDefs qw(RPC_ERR_CODE_INTERNAL_ERROR);
 
 use DHCPMGR::SecurityManager;
+use DHCPMGR::OmapiManager;
 use DHCPMGR::Services::SystemInformationService;
 use DHCPMGR::Services::AuthenticationService;
 use DHCPMGR::Services::DhcpServerManagementService;
@@ -78,6 +79,7 @@ sub start {
 
 		# init other services
 		$self->{'sec_mgr'} = DHCPMGR::SecurityManager->new($self);
+		$self->{'om_mgr'} = DHCPMGR::OmapiManager->new($self);
 
         # rpc services
         $self->{'wsp'}->rpc_service_register('SystemInformationService', DHCPMGR::Services::SystemInformationService->new($self));
