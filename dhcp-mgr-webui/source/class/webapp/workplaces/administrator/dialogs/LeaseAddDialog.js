@@ -6,7 +6,7 @@ qx.Class.define("webapp.workplaces.administrator.dialogs.LeaseAddDialog", {
     extend: org.cforge.qooxdoo.ui.dialog.FormDialog,
 
     construct:function () {
-        this.base(arguments, this.tr("Adding a new entry"));
+        this.base(arguments, this.tr("Adding a new host entry"));
         this.__initComponents();
     },
 

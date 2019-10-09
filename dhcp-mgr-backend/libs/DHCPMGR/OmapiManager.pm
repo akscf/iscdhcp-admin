@@ -1,6 +1,6 @@
 # ******************************************************************************************
-# temporary implementation on omshell
 #
+# 
 # @author AlexandrinK <aks@cforge.org>
 # ******************************************************************************************
 package DHCPMGR::OmapiManager;
@@ -27,7 +27,7 @@ sub new ($$;$) {
 		omapi_enabled		=> ($mgr->get_config('dhcp','omapi_enable') eq 'true' ? 1 : 0)
 	};
 	bless( $self, $class );
-	$self->{logger}->debug("OMAPI: ".($self->{omapi_enabled} ? "enabled" : "disabled"));    
+	$self->{logger}->debug("OMAPI: ".($self->{omapi_enabled} ? "enabled" : "disabled"));
 	return $self;
 }
 
@@ -46,19 +46,71 @@ sub obj_create {
 		die WSP::WspException->new( 'OMAPI disabled', RPC_ERR_CODE_INTERNAL_ERROR );
 	}
 	#
-	$self->{logger}->debug("OBJ CREATE: ".Dumper($entity));
+	if(!$entity || $entity->{'class'} ne DHCPMGR::Models::LeaseEntry->MODEL_NAME) {
+		die WSP::WspException->new( 'Invalid entity class', RPC_ERR_CODE_INVALID_ARGUMENT );
+	}
+	unless($entity->{'name'}) {
+		die WSP::WspException->new( 'Invalid: name', RPC_ERR_CODE_INVALID_PROPERTY );
+	}
+	if($entity->{'mac'} !~ /^([0-9a-fA-F]{2}(:|$)){6}$/) {
+		die WSP::WspException->new( 'Invalid: MAC address', RPC_ERR_CODE_INVALID_PROPERTY );
+    }
+	if($entity->{'ip'} !~ /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/) {
+		die WSP::WspException->new( 'Invalid: IP address', RPC_ERR_CODE_INVALID_PROPERTY );
+    }
+	#
+	my $cmd = "new \"host\"\n";
+	$cmd .= "set hardware-type=1\n";
+	$cmd .= "set name=\"".$entity->{name}."\"\n";	
+	$cmd .= "set hardware-address=".$entity->{mac}."\n";
+	$cmd .= "set ip-address=".$entity->{ip}."\n";
+	$cmd .= "create\n";
+	#
+	my($map, $err) = om_exec($self, $cmd);
+	if($err) { om_throw_exception($self, $err); return 0; }
+	$entity->{state} = 'active';
+	$entity->{type}  = 'host';
+	#
     return $entity;
 }
 
+#
+# omapi update doesn't work correctly, 
+# we have to delete old and create a new object
+#
 sub obj_update {
 	my ($self, $entity) = @_;
 	#
 	unless($self->{omapi_enabled}) {
 		die WSP::WspException->new( 'OMAPI disabled', RPC_ERR_CODE_INTERNAL_ERROR );
 	}
+	if(!$entity || $entity->{'class'} ne DHCPMGR::Models::LeaseEntry->MODEL_NAME) {
+		die WSP::WspException->new( 'Invalid entity class', RPC_ERR_CODE_INVALID_ARGUMENT );
+	}
+	unless($entity->{'name'}) {
+		die WSP::WspException->new( 'Invalid: name', RPC_ERR_CODE_INVALID_PROPERTY );
+	}
+	if($entity->{'mac'} !~ /^([0-9a-fA-F]{2}(:|$)){6}$/) {
+		die WSP::WspException->new( 'Invalid: MAC address', RPC_ERR_CODE_INVALID_PROPERTY );
+    }
+	if($entity->{'ip'} !~ /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/) {
+		die WSP::WspException->new( 'Invalid: IP address', RPC_ERR_CODE_INVALID_PROPERTY );
+    }
 	#
-	$self->{logger}->debug("OBJ UPDATE: ".Dumper($entity));	
-    return $entity;
+	my($map, $err) = om_exec($self, "new \"host\"\nset hardware-address=".$entity->{mac}."\nopen\n");
+	if($err) {
+		if($err eq 'not found') {
+			return obj_create($self, $entity)
+		}
+		om_throw_exception($self, $err); 
+		return 0; 
+	}
+	my $o = om_fill_lease_object($self, $map, DHCPMGR::Models::LeaseEntry->new());
+	if($o->{name} eq $entity->{name} && $o->{ip} eq $entity->{ip}) {
+		return $o;
+	}
+	obj_delete($self, $entity->{mac});
+	return obj_create($self, $entity);
 }
 
 sub obj_get {
@@ -73,12 +125,9 @@ sub obj_get {
 		if($err eq 'not found') {
 			($map, $err) = om_exec($self, "new \"host\"\nset hardware-address=".$mac."\nopen\n");
 		}
-		if($err) {
-			om_throw_exception($self, $err);
-			return undef;
-		}	
+		if($err) { om_throw_exception($self, $err); return 0; }
 	}
-	my $o = om_fill_lease_bject($self, $map, DHCPMGR::Models::LeaseEntry->new());
+	my $o = om_fill_lease_object($self, $map, DHCPMGR::Models::LeaseEntry->new());
 	$o->{state} = 'active' if($o->{type} eq 'host');
 	#
 	return $o;
@@ -92,10 +141,13 @@ sub obj_delete {
 	}		
 	#
 	my($map, $err) = om_exec($self, "new \"host\"\nset hardware-address=".$mac."\nopen\nremove\n");
-	if($err) {
-		om_throw_exception($self, $err);
-		return undef;
-	}	
+	if($err) { om_throw_exception($self, $err); return 0; }	
+	#if($err) {
+		#if($err eq 'not found') {
+		#	($map, $err) = om_exec($self, "new \"lease\"\nset state=1\nopen\nupdate\n");
+		#}
+		#if($err) { om_throw_exception($self, $err);return 0; }	
+	#}	
     return 1;
 }
 
@@ -103,7 +155,7 @@ sub obj_delete {
 # private
 # -------------------------------------------------------------------------------------------
 sub om_exec {
-	my ($self, $ucmd) = @_;
+	my ($self, $ucmd, $ucmd2) = @_;
 	my $mgr = $self->{mgr};
 	my $err_msg = undef;
 	my $result = {};
@@ -120,6 +172,7 @@ sub om_exec {
     }
 	print(OMSHELL $scmd);
 	print(OMSHELL $ucmd);
+	print(OMSHELL $ucmd2) if($ucmd2);	
 	close(OMSHELL);
 	#
 	my @arr = read_file($tfname, chomp => 1);
@@ -149,10 +202,10 @@ sub om_throw_exception {
 		return 0;
 	}	
 	if($err eq 'not found') {
-		die WSP::WspException->new( 'Object not found', RPC_ERR_CODE_NOT_FOUND );
+		die WSP::WspException->new( 'OMAPI: object not found', RPC_ERR_CODE_NOT_FOUND );
 	}
 	if($err eq 'already exists') {
-		die WSP::WspException->new( 'Object already exists', RPC_ERR_CODE_ALREADY_EXISTS );
+		die WSP::WspException->new( 'OMAPI: object already exists', RPC_ERR_CODE_ALREADY_EXISTS );
 	}
 	die WSP::WspException->new( "OMAPI: ".$err, RPC_ERR_CODE_INTERNAL_ERROR );
 }
@@ -185,7 +238,7 @@ sub om_normalize_date {
 	my ($sec, $min, $hour, $mday, $mon, $year) = (localtime($i))[0..5];
 	return sprintf("%d/%02d/%02d %02d:%02d:%02d", ($year + 1900), ($mon + 1), $mday, $hour, $min, $sec);
 }
-sub om_fill_lease_bject {	
+sub om_fill_lease_object {	
 	my ($self, $map, $entity) = @_;
 	$entity->{name} = $map->{'client-hostname'};
 	$entity->{type} = $map->{'type'};

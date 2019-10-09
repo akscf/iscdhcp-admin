@@ -350,18 +350,18 @@ msgid "Find"
 msgstr "Искать"
 
 #: webapp/workplaces/administrator/dialogs/LeaseAddDialog.js:9
-msgid "Adding a new entry"
-msgstr ""
+msgid "Adding a new host entry"
+msgstr "Добавление новой записи (host)"
 
 #: webapp/workplaces/administrator/dialogs/LeaseAddDialog.js:37
 #: webapp/workplaces/administrator/dialogs/LeaseEditDialog.js:41
 msgid "Host name"
-msgstr ""
+msgstr "Имя хоста"
 
 #: webapp/workplaces/administrator/dialogs/LeaseAddDialog.js:38
 #: webapp/workplaces/administrator/dialogs/LeaseEditDialog.js:42
 msgid "IP address"
-msgstr ""
+msgstr "IP адрес"
 
 #: webapp/workplaces/administrator/pages/LeasesPage.js:31
 #: webapp/workplaces/administrator/dialogs/LeaseAddDialog.js:41
@@ -371,15 +371,15 @@ msgstr "Добавить"
 #: webapp/workplaces/administrator/dialogs/LeaseAddDialog.js:42
 #: webapp/workplaces/administrator/dialogs/LeaseEditDialog.js:46
 msgid "Cancel"
-msgstr ""
+msgstr "Отмена"
 
 #: webapp/workplaces/administrator/dialogs/LeaseEditDialog.js:23
 msgid "Editing entry: %1"
-msgstr ""
+msgstr "Редактирование: %1"
 
 #: webapp/workplaces/administrator/dialogs/LeaseEditDialog.js:45
 msgid "Apply"
-msgstr ""
+msgstr "Применить"
 
 #: webapp/workplaces/administrator/pages/ConfigPage.js:9
 msgid "Server"
@@ -423,21 +423,21 @@ msgstr "Состояние"
 msgid "PID"
 msgstr ""
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:125
+#: webapp/workplaces/administrator/pages/LeasesPage.js:128
 #: webapp/workplaces/administrator/pages/ConfigPage.js:98
 #: webapp/workplaces/administrator/pages/ConfigPage.js:111
 #: webapp/workplaces/administrator/pages/ConfigPage.js:124
 msgid "Do you want to continue?"
 msgstr "Хотите продолжить?"
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:125
+#: webapp/workplaces/administrator/pages/LeasesPage.js:128
 #: webapp/workplaces/administrator/pages/ConfigPage.js:98
 #: webapp/workplaces/administrator/pages/ConfigPage.js:111
 #: webapp/workplaces/administrator/pages/ConfigPage.js:124
 msgid "No"
 msgstr "Нет"
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:125
+#: webapp/workplaces/administrator/pages/LeasesPage.js:128
 #: webapp/workplaces/administrator/pages/ConfigPage.js:98
 #: webapp/workplaces/administrator/pages/ConfigPage.js:111
 #: webapp/workplaces/administrator/pages/ConfigPage.js:124
@@ -458,7 +458,7 @@ msgstr "Редактировать"
 msgid "Delete"
 msgstr "Удалить"
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:125
+#: webapp/workplaces/administrator/pages/LeasesPage.js:128
 msgid "Deleting"
 msgstr "Удаление"
 
@@ -477,3 +477,4 @@ msgstr "Сообщение"
 #: webapp/workplaces/administrator/pages/LogsPage.js:62
 msgid "Record details"
 msgstr "Детали"
+

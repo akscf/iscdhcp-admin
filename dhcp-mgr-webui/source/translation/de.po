@@ -350,7 +350,7 @@ msgid "Find"
 msgstr ""
 
 #: webapp/workplaces/administrator/dialogs/LeaseAddDialog.js:9
-msgid "Adding a new entry"
+msgid "Adding a new host entry"
 msgstr ""
 
 #: webapp/workplaces/administrator/dialogs/LeaseAddDialog.js:37
@@ -423,21 +423,21 @@ msgstr ""
 msgid "PID"
 msgstr ""
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:125
+#: webapp/workplaces/administrator/pages/LeasesPage.js:128
 #: webapp/workplaces/administrator/pages/ConfigPage.js:98
 #: webapp/workplaces/administrator/pages/ConfigPage.js:111
 #: webapp/workplaces/administrator/pages/ConfigPage.js:124
 msgid "Do you want to continue?"
 msgstr ""
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:125
+#: webapp/workplaces/administrator/pages/LeasesPage.js:128
 #: webapp/workplaces/administrator/pages/ConfigPage.js:98
 #: webapp/workplaces/administrator/pages/ConfigPage.js:111
 #: webapp/workplaces/administrator/pages/ConfigPage.js:124
 msgid "No"
 msgstr ""
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:125
+#: webapp/workplaces/administrator/pages/LeasesPage.js:128
 #: webapp/workplaces/administrator/pages/ConfigPage.js:98
 #: webapp/workplaces/administrator/pages/ConfigPage.js:111
 #: webapp/workplaces/administrator/pages/ConfigPage.js:124
@@ -458,7 +458,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: webapp/workplaces/administrator/pages/LeasesPage.js:125
+#: webapp/workplaces/administrator/pages/LeasesPage.js:128
 msgid "Deleting"
 msgstr ""
 
@@ -477,3 +477,4 @@ msgstr ""
 #: webapp/workplaces/administrator/pages/LogsPage.js:62
 msgid "Record details"
 msgstr ""
+

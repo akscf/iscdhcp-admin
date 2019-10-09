@@ -106,6 +106,11 @@ sub rpc_search {
         if ($lease_fnd && $line=~/^\s+binding\sstate\s(.*?)\;/) {
 			$lease_entry->{state} = $1;
         }
+        if ($lease_fnd && $line=~/^\s+deleted\;/) {
+        	$lease_entry = undef;
+			$lease_fnd = 0;			
+			$lease_count--;        	
+        }
         if ($lease_fnd && $line=~/^}/){
         	if($use_filter) {
         		if($lease_entry->{ip} =~ /$filter/ || $lease_entry->{mac} =~ /$filter/) {
