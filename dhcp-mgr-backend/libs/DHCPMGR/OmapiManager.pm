@@ -99,10 +99,7 @@ sub obj_update {
 	#
 	my($map, $err) = om_exec($self, "new \"host\"\nset hardware-address=".$entity->{mac}."\nopen\n");
 	if($err) {
-		if($err eq 'not found') {
-			return obj_create($self, $entity)
-		}
-		om_throw_exception($self, $err); 
+		om_throw_exception($self, $err);
 		return 0; 
 	}
 	my $o = om_fill_lease_object($self, $map, DHCPMGR::Models::LeaseEntry->new());
