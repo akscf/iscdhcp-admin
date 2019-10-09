@@ -8,22 +8,19 @@
 </p>
 
 ------------------------
-Changes log:
-<br>
-9.10.2019 [isc-dhcp-manager-1.0.0-09102019](https://sourceforge.net/projects/cfdisfiles/files/isc-dhcp-manager/isc-dhcp-manager-1.0.0-09102019.tar.gz/download)
+Changes log:<br>
+9.10.2019 [isc-dhcp-manager-1.0.0-09102019](https://sourceforge.net/projects/cfdisfiles/files/isc-dhcp-manager/isc-dhcp-manager-1.0.0-09102019.tar.gz/download)<br>
     * fexed bugs in UI<br>
     + added leases management functions: add/update/delete/get<br>
-    <br><br>
     
 26.09.2019 [isc-dhcp-manager-1.0.0-26092019](https://sourceforge.net/projects/cfdisfiles/files/isc-dhcp-manager/isc-dhcp-manager-1.0.0-26092019.tar.gz/download)  
     * fixed some bugs in UI (language change)<br>
     * fixed some bugs in backend (config)<br>
     + viewer UI<br>
-    <br><br>
 
-    17.05.2019 [isc-dhcp-manager-1.0.0-17052019](https://sourceforge.net/projects/cfdisfiles/files/isc-dhcp-manager/isc-dhcp-manager-1.0.0-17052019/download)<br>
+17.05.2019 [isc-dhcp-manager-1.0.0-17052019](https://sourceforge.net/projects/cfdisfiles/files/isc-dhcp-manager/isc-dhcp-manager-1.0.0-17052019/download)<br>
     initial version<br>
-    <br><br>
+    
     
 ------------------------
 1. Installation<br>
@@ -34,8 +31,7 @@ Changes log:
     manager settings......: /opt/dhcp-mgr/configs/dhcpmgr.conf<br>
     web server settings...: /opt/dhcp-mgr/configs/wsp.conf<br>
     logger settings.......: /opt/dhcp-mgr/configs/log4perl.conf<br>
-<br>
-<br>
+
 2. Starting<br>
    auto-start:<br>
      copy /opt/dhcp-mgr/dhcp-mgr -> /etc/init.d/<br>
@@ -44,8 +40,7 @@ Changes log:
    testing:<br>
     /opt/dhcp-mgr/wsp-run.sh start<br>
     ctrl+c for stop
-<br>
-<br>
+
 3. Web access<br>
    By default, the web console available here: http://127.0.0.1:8080/.<br>
    There are 2 roles: admin (it's a maximum privileged role, that gives access to the following functions: edit configs/leases, view logs and manage a dhcp server),<br>
@@ -53,50 +48,48 @@ Changes log:
    Credentials: admin:secret / viewer:secret<br>
    <br>
    You can change it here:  /opt/dhcp-mgr/configs/dhcpmgr.conf
-<br>
-<br>
-<br>
+
 ------------------------
-Web services:<br>  
-<br>
+Web services:<br>
+
   * DhcpServerManagementService<br>
-     - <b>serverStart()</b><br>
+     - <b>#serverStart()</b><br>
        restart the DHCP daemon<br>
-       example: curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"DhcpServerManagementService", "method":"serverStart", "params":null}'<br>  
-       <br>
-     - <b>serverStop()</b><br>
+       <i>curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"DhcpServerManagementService", "method":"serverStart", "params":null}'</i><br>
+       
+     - <b>#serverStop()</b><br>
        stop the DHCP daemon<br>
-       example: curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"DhcpServerManagementService", "method":"serverStop", "params":null}'<br>
-       <br>
+       <i>curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"DhcpServerManagementService", "method":"serverStop", "params":null}'</i><br>
+       
      - <b>serverReload()</b><br>
        reload the DHCP daemon (apply a new configuration and clean leases base)<br>
-       example: curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"DhcpServerManagementService", "method":"serverReload", "params":null}'<br>
-       <br>
+       <i>#curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"DhcpServerManagementService", "method":"serverReload", "params":null}'</i><br>
+       
      - <b>serverGetStatus()</b><br>
        get the dhcpd version and status<br>
-       example: curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"DhcpServerManagementService", "method":"serverGetStatus", "params":null}'<br>
-       <br>       
+       <i>#curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"DhcpServerManagementService", "method":"serverGetStatus", "params":null}'</i><br>
+       
      - <b>configRead()</b><br>
        read DHCP daemon configuration<br>
-       example: curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"DhcpServerManagementService", "method":"configRead", "params":null}'<br>
-       <br>
-     - <b>configWrite(text)</b><br>  
+       <i>#curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"DhcpServerManagementService", "method":"configRead", "params":null}'</i><br>
+       
+     - <b>configWrite(text)</b><br>
        write/update the DHCP daemon configuration<br>
-       example: curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"DhcpServerManagementService", "method":"configWrite", "params":"--- config text ---"}'<br>
-       <br>
+       <i>#curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"DhcpServerManagementService", "method":"configWrite", "params":"--- config text ---"}'</i><br>
+       
      - <b>listenInterfacesGet()</b><br>
        show availble intrfaces<br>
-       example: curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"DhcpServerManagementService", "method":"listenInterfacesGet", "params":null}'<br>
-       <br>
+       <i>#curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"DhcpServerManagementService", "method":"listenInterfacesGet", "params":null}'</i><br>
+       
      - <b>listenInterfacesSet(text)</b><br>
-     	not yes implemented<br>
-     	example: curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"DhcpServerManagementService", "method":"listenInterfacesSet", "params":["eth0, eth1"]}'<br>
-     	<br>
+     	not yet implemented<br>
+     	<i>#curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"DhcpServerManagementService", "method":"listenInterfacesSet", "params":["eth0, eth1"]}'</i><br>
+      
      - <b>logRead(filter, settings)</b><br>
      	read last lines from syslog (just only read, the search function not yet implemented)<br>
-     	example: curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"DhcpServerManagementService", "method":"logRead", "params":["error", null]}'<br>
-<br>
-  * LeasesManagementService  
+     	<i>#curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"DhcpServerManagementService", "method":"logRead", "params":["error", null]}'</i><br>
+
+  * LeasesManagementService<br>
      - <b>search(filter, settings)</b><br>
      	search a lease into db by ip or mac<br>
      	example1: curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"LeasesManagementService", "method":"search", "params":["192.168.1", null]}'<br>
