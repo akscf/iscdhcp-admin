@@ -1,5 +1,4 @@
-<b>A simple web interface and web services for ISC DHCPD</b><br>
-
+<p align="center"><b>A simple web interface and web services for ISC DHCPD</b></p><br>
 <p align="center">
  <img width="320" height="200" src="https://github.com/akscf/isc-dhcp-manager/blob/master/sshots/s0.png">
  <img width="320" height="200" src="https://github.com/akscf/isc-dhcp-manager/blob/master/sshots/s1.png">
