@@ -53,13 +53,13 @@ Changes log:<br>
 Web services:<br>
 
   * DhcpServerManagementService<br>
-     - <b>#serverStart()</b><br>
+     - <b>serverStart()</b><br>
        restart the DHCP daemon<br>
-       <i>curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"DhcpServerManagementService", "method":"serverStart", "params":null}'</i><br>
+       <i>#curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"DhcpServerManagementService", "method":"serverStart", "params":null}'</i><br>
        
-     - <b>#serverStop()</b><br>
+     - <b>serverStop()</b><br>
        stop the DHCP daemon<br>
-       <i>curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"DhcpServerManagementService", "method":"serverStop", "params":null}'</i><br>
+       <i>#curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"DhcpServerManagementService", "method":"serverStop", "params":null}'</i><br>
        
      - <b>serverReload()</b><br>
        reload the DHCP daemon (apply a new configuration and clean leases base)<br>
@@ -90,25 +90,25 @@ Web services:<br>
      	<i>#curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"DhcpServerManagementService", "method":"logRead", "params":["error", null]}'</i><br>
 
   * LeasesManagementService<br>
-     - <b>search(filter, settings)</b><br>
+      - <b>search(filter, settings)</b><br>
      	search a lease into db by ip or mac<br>
-     	example1: curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"LeasesManagementService", "method":"search", "params":["192.168.1", null]}'<br>
-     	example2: curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"LeasesManagementService", "method":"search", "params":["00:0e:08", null]}'<br>
-     	<br>
-     - <b>get(mac)</b><br>
+     	<i>#curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"LeasesManagementService", "method":"search", "params":["192.168.1", null]}'</i><br>
+     	<i>#curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"LeasesManagementService", "method":"search", "params":["00:0e:08", null]}'</i><br>
+      
+      - <b>get(mac)</b><br>
         lookup object by mac (lease / host)<br>
-        example: curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"LeasesManagementService", "method":"get", "params":["00:0e:08:01:01:01"]}'<br>
-        <br>
+        <i>#curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"LeasesManagementService", "method":"get", "params":["00:0e:08:01:01:01"]}'</i><br>
+        
      - <b>add(entity)</b><br>
      	create a new host object (see details here: DHCPMGR::Models::LeaseEntry)<br>
-     	example: curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"LeasesManagementService", "method":"add", "params":[{"class":"DHCPMGR.Models.LeaseEntry", "type":"host", "name":"test2", "ip":"192.168.1.2", "mac":"00:0e:08:01:01:01", "state":null,"startTime":null,"endTime":null}}'<br>
-     	<br>
+     	<i>#curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"LeasesManagementService", "method":"add", "params":[{"class":"DHCPMGR.Models.LeaseEntry", "type":"host", "name":"test2", "ip":"192.168.1.2", "mac":"00:0e:08:01:01:01", "state":null,"startTime":null,"endTime":null}}'</i><br>
+      
      - <b>update(entity)</b><br>
      	update an exists lease object<br>
-     	example: curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"LeasesManagementService", "method":"update", "params":[{"class":"DHCPMGR.Models.LeaseEntry", "type":"host", "name":"test2", "ip":"192.168.11.22", "mac":"00:0e:08:01:01:01", "state":null,"startTime":null,"endTime":null}}'<br>
-     	<br>
+     	<i>#curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"LeasesManagementService", "method":"update", "params":[{"class":"DHCPMGR.Models.LeaseEntry", "type":"host", "name":"test2", "ip":"192.168.11.22", "mac":"00:0e:08:01:01:01", "state":null,"startTime":null,"endTime":null}}'</i><br>
+      
      - <b>delete(mac)</b><br>
         delete an exists lease object (only for host)<br>
-     	example: curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"LeasesManagementService", "method":"delete", "params":["00:0e:08:01:01:01"}'<br>
-     	<br>
-<br>
+     	<i>#curl -u admin:secret -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/rpc/ -d '{"id":1, "service":"LeasesManagementService", "method":"delete", "params":["00:0e:08:01:01:01"}'</i><br>
+      
+      
