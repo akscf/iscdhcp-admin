@@ -9,16 +9,16 @@
 
 ------------------------
 Changes log:<br>
-9.10.2019 [isc-dhcp-manager-1.0.0-09102019](https://sourceforge.net/projects/cfdisfiles/files/isc-dhcp-manager/isc-dhcp-manager-1.0.0-09102019.tar.gz/download)<br>
+<b>9.10.2019</b> [isc-dhcp-manager-1.0.0-09102019](https://sourceforge.net/projects/cfdisfiles/files/isc-dhcp-manager/isc-dhcp-manager-1.0.0-09102019.tar.gz/download)<br>
     * fexed bugs in UI<br>
     + added leases management functions: add/update/delete/get<br>
     
-26.09.2019 [isc-dhcp-manager-1.0.0-26092019](https://sourceforge.net/projects/cfdisfiles/files/isc-dhcp-manager/isc-dhcp-manager-1.0.0-26092019.tar.gz/download)  
+<b>26.09.2019</b> [isc-dhcp-manager-1.0.0-26092019](https://sourceforge.net/projects/cfdisfiles/files/isc-dhcp-manager/isc-dhcp-manager-1.0.0-26092019.tar.gz/download)  
     * fixed some bugs in UI (language change)<br>
     * fixed some bugs in backend (config)<br>
     + viewer UI<br>
 
-17.05.2019 [isc-dhcp-manager-1.0.0-17052019](https://sourceforge.net/projects/cfdisfiles/files/isc-dhcp-manager/isc-dhcp-manager-1.0.0-17052019/download)<br>
+<b>17.05.2019</b> [isc-dhcp-manager-1.0.0-17052019](https://sourceforge.net/projects/cfdisfiles/files/isc-dhcp-manager/isc-dhcp-manager-1.0.0-17052019/download)<br>
     initial version<br>
     
     
