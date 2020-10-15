@@ -1,0 +1,402 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: AlexandrinK <aks@cforge.org>\n"
+"POT-Creation-Date: 2014-10-20 11:31+0400\n"
+"PO-Revision-Date: 2014-10-20 11:31+0400\n"
+"Last-Translator: AlexandrinK <aks@cforge.org>\n"
+"Language-Team: AlexandrinK <aks@cforge.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: dhcpadm/sdk/services/DhcpServerManagementService.js:14
+msgid "Starting server..."
+msgstr "Запуск сервера..."
+
+#: dhcpadm/sdk/services/DhcpServerManagementService.js:25
+msgid "Stopping server..."
+msgstr "Остановка сервера..."
+
+#: dhcpadm/sdk/services/DhcpServerManagementService.js:36
+msgid "Reloading server configuration..."
+msgstr "Перезагрузка конфигурации..."
+
+#: dhcpadm/sdk/services/DhcpServerManagementService.js:58
+msgid "Loading configuration..."
+msgstr ""
+
+#: dhcpadm/sdk/services/DhcpServerManagementService.js:69
+msgid "Writing configuration..."
+msgstr ""
+
+#: dhcpadm/sdk/services/DhcpServerManagementService.js:80
+#: dhcpadm/sdk/services/SystemInformationService.js:14
+msgid "Loading..."
+msgstr "Загрузка..."
+
+#: dhcpadm/sdk/services/LeasesManagementService.js:14
+msgid "Adding..."
+msgstr "Добавление..."
+
+#: dhcpadm/sdk/services/LeasesManagementService.js:25
+msgid "Updating..."
+msgstr "Обновление..."
+
+#: dhcpadm/sdk/services/LeasesManagementService.js:36
+msgid "Deleting..."
+msgstr "Удаление..."
+
+#: dhcpadm/sdk/services/LeasesManagementService.js:47
+msgid "Fetching..."
+msgstr "Получение..."
+
+#: dhcpadm/sdk/services/LeasesManagementService.js:58
+msgid "Fetching objects..."
+msgstr "Получение объектов..."
+
+#: dhcpadm/workplaces/WPAdmin.js:41
+#: fw/core/qooxdoo/widgets/GenericWorkplace.js:37
+msgid "Logout"
+msgstr "Выход"
+
+#: dhcpadm/workplaces/admin/commons/ConfigEditorWidget.js:33
+msgid "Save changes"
+msgstr ""
+
+#: dhcpadm/workplaces/admin/commons/ConfigEditorWidget.js:34
+msgid "Reload config"
+msgstr ""
+
+#: dhcpadm/workplaces/admin/commons/ConfigEditorWidget.js:36
+msgid "Undo"
+msgstr ""
+
+#: dhcpadm/workplaces/admin/commons/ConfigEditorWidget.js:38
+msgid "Start server"
+msgstr "Запустить сервре"
+
+#: dhcpadm/workplaces/admin/commons/ConfigEditorWidget.js:39
+msgid "Stop server"
+msgstr "Остановить сервре"
+
+#: dhcpadm/workplaces/admin/commons/ConfigEditorWidget.js:40
+msgid "Reload configuration"
+msgstr "Перезагрузить конфигурацию"
+
+#: dhcpadm/workplaces/admin/commons/ConfigEditorWidget.js:41
+msgid "server stats"
+msgstr ""
+
+#: dhcpadm/workplaces/admin/commons/ConfigEditorWidget.js:42
+msgid "Update status"
+msgstr ""
+
+#: dhcpadm/workplaces/admin/commons/ConfigEditorWidget.js:46
+#: fw/core/qooxdoo/widgets/TableStatusBarSearchWidget.js:23
+msgid "text for search"
+msgstr "текст для поиска"
+
+#: dhcpadm/workplaces/admin/commons/ConfigEditorWidget.js:47
+msgid "Find"
+msgstr ""
+
+#: dhcpadm/workplaces/admin/commons/ConfigEditorWidget.js:69
+#: dhcpadm/workplaces/admin/commons/ConfigEditorWidget.js:83
+msgid "Do you really want to continue?"
+msgstr "Вы действительно хотите продолжить?"
+
+#: dhcpadm/workplaces/admin/commons/ConfigEditorWidget.js:69
+#: dhcpadm/workplaces/admin/commons/ConfigEditorWidget.js:83
+msgid "No"
+msgstr "Нет"
+
+#: dhcpadm/workplaces/admin/commons/ConfigEditorWidget.js:69
+msgid "Strarting server"
+msgstr "Запустить сервер"
+
+#: dhcpadm/workplaces/admin/commons/ConfigEditorWidget.js:69
+#: dhcpadm/workplaces/admin/commons/ConfigEditorWidget.js:83
+msgid "Yes"
+msgstr "Да"
+
+#: dhcpadm/workplaces/admin/commons/ConfigEditorWidget.js:83
+msgid "Stopping server"
+msgstr "Остановить сервре"
+
+#: dhcpadm/workplaces/admin/commons/ConfigEditorWidget.js:98
+msgid "pending..."
+msgstr "подготовка..."
+
+#: dhcpadm/workplaces/admin/commons/ConfigEditorWidget.js:102
+msgid "unknown"
+msgstr ""
+
+#: dhcpadm/workplaces/admin/commons/JournalViewerWidget.js:33
+msgid "Messages"
+msgstr "Сообщения"
+
+#: dhcpadm/workplaces/admin/commons/JournalViewerWidget.js:39
+msgid "reload journal"
+msgstr "перезагрузить дурнал"
+
+#: dhcpadm/workplaces/admin/commons/JournalViewerWidget.js:53
+msgid "Record details"
+msgstr "Детали записи"
+
+#: dhcpadm/workplaces/admin/commons/LeasesMgmtWidget.js:32
+msgid "Add lease"
+msgstr ""
+
+#: dhcpadm/workplaces/admin/commons/LeasesMgmtWidget.js:35
+msgid "Refresh item"
+msgstr "Обновить элемент"
+
+#: dhcpadm/workplaces/admin/commons/LeasesMgmtWidget.js:37
+msgid "Show details"
+msgstr ""
+
+#: dhcpadm/workplaces/admin/commons/LeasesMgmtWidget.js:38
+msgid "Edit"
+msgstr "Редактировать"
+
+#: dhcpadm/workplaces/admin/commons/LeasesMgmtWidget.js:40
+#: dhcpadm/workplaces/admin/commons/LeasesMgmtWidget.js:114
+msgid "Delete"
+msgstr "Удалить"
+
+#: dhcpadm/workplaces/admin/commons/LeasesMgmtWidget.js:56
+msgid "reload data"
+msgstr "перезагрузить данные"
+
+#: dhcpadm/workplaces/admin/commons/LeasesMgmtWidget.js:113
+msgid "Deleting"
+msgstr "Удаление"
+
+#: dhcpadm/workplaces/admin/commons/LeasesMgmtWidget.js:114
+msgid ""
+"Selected objects will be deleted!<br>If you want to continue, click the "
+"'<b>Delete</b>' button."
+msgstr ""
+
+#: dhcpadm/workplaces/admin/commons/LeasesMgmtWidget.js:114
+#: dhcpadm/workplaces/admin/dialogs/LeaseEditDialog.js:44
+#: dhcpadm/workplaces/admin/dialogs/LeaseAddDialog.js:53
+msgid "Cancel"
+msgstr "Отмена"
+
+#: dhcpadm/workplaces/admin/commons/LeasesTableModelRemote.js:11
+msgid "IP"
+msgstr ""
+
+#: dhcpadm/workplaces/admin/commons/LeasesTableModelRemote.js:11
+msgid "MAC"
+msgstr ""
+
+#: dhcpadm/workplaces/admin/commons/LeasesTableModelRemote.js:11
+msgid "Name"
+msgstr "Имя"
+
+#: dhcpadm/workplaces/admin/commons/LeasesTableModelRemote.js:11
+msgid "Period"
+msgstr ""
+
+#: dhcpadm/workplaces/admin/commons/LeasesTableModelRemote.js:11
+msgid "Type"
+msgstr ""
+
+#: fw/core/qooxdoo/dialogs/QuestionDialog2.js:29
+#: dhcpadm/workplaces/admin/dialogs/JournalRecordViewerDialog.js:28
+#: fw/core/qooxdoo/dialogs/RpcExceptionDialog.js:39
+#: fw/core/qooxdoo/dialogs/ErrorDialog.js:31
+#: fw/core/qooxdoo/dialogs/InformationDialog.js:26
+#: fw/core/qooxdoo/dialogs/QuestionDialog.js:29
+#: dhcpadm/workplaces/admin/dialogs/LeaseDetailsDialog.js:37
+msgid "Close"
+msgstr "Закрыть"
+
+#: dhcpadm/workplaces/admin/dialogs/LeaseAddDialog.js:9
+msgid "Adding a new (host) lease"
+msgstr ""
+
+#: dhcpadm/workplaces/admin/dialogs/LeaseEditDialog.js:39
+#: dhcpadm/workplaces/admin/dialogs/LeaseAddDialog.js:48
+msgid "MAC address"
+msgstr ""
+
+#: dhcpadm/workplaces/admin/dialogs/LeaseEditDialog.js:40
+#: dhcpadm/workplaces/admin/dialogs/LeaseAddDialog.js:49
+msgid "IP address"
+msgstr ""
+
+#: dhcpadm/workplaces/admin/dialogs/LeaseEditDialog.js:41
+#: dhcpadm/workplaces/admin/dialogs/LeaseAddDialog.js:50
+msgid "Host name"
+msgstr ""
+
+#: dhcpadm/workplaces/admin/dialogs/LeaseAddDialog.js:52
+msgid "Add"
+msgstr "Добавить"
+
+#: dhcpadm/workplaces/admin/dialogs/LeaseEditDialog.js:43
+msgid "Apply"
+msgstr "Применить"
+
+#: dhcpadm/workplaces/admin/pages/DhcpManagementPage.js:33
+msgid "Leases"
+msgstr ""
+
+#: dhcpadm/workplaces/admin/pages/DhcpManagementPage.js:44
+msgid "Config"
+msgstr ""
+
+#: dhcpadm/workplaces/admin/pages/DhcpManagementPage.js:54
+msgid "Journal"
+msgstr "Журнал"
+
+#: fw/core/qooxdoo/dialogs/BusyIndicator.js:36
+msgid "Processing..."
+msgstr "Обработка..."
+
+#: fw/core/qooxdoo/dialogs/ErrorDialog.js:8
+#: fw/core/qooxdoo/dialogs/MessageBox.js:77
+#: fw/core/qooxdoo/dialogs/MessageBox.js:79
+msgid "Error"
+msgstr "Ошибка"
+
+#: fw/core/qooxdoo/dialogs/InformationDialog.js:8
+msgid "Information"
+msgstr "Информация"
+
+#: fw/core/qooxdoo/dialogs/LoginDialog.js:17
+msgid "change locale"
+msgstr ""
+
+#: fw/core/qooxdoo/dialogs/MessageBox.js:88
+#: fw/core/qooxdoo/dialogs/MessageBox.js:90
+msgid "Notice"
+msgstr "Внимаение"
+
+#: fw/core/qooxdoo/dialogs/QuestionDialog2.js:9
+#: fw/core/qooxdoo/dialogs/QuestionDialog2.js:22
+#: fw/core/qooxdoo/dialogs/QuestionDialog.js:9
+#: fw/core/qooxdoo/dialogs/QuestionDialog.js:22
+msgid "Attention"
+msgstr "Внимание"
+
+#: fw/core/qooxdoo/dialogs/QuestionDialog2.js:47
+msgid "Don't ask me again"
+msgstr "Не спрашивать больше"
+
+#: fw/core/qooxdoo/dialogs/RpcExceptionDialog.js:8
+msgid "Service exception"
+msgstr ""
+
+#: fw/core/qooxdoo/dialogs/RpcExceptionDialog.js:69
+msgid "Server internal error (see. logs)"
+msgstr ""
+
+#: fw/core/qooxdoo/dialogs/RpcExceptionDialog.js:73
+msgid "Invalid argument: %1"
+msgstr "Неверный аргумент: %1"
+
+#: fw/core/qooxdoo/dialogs/RpcExceptionDialog.js:77
+msgid "Already exists: %1"
+msgstr "Уже существует: %1"
+
+#: fw/core/qooxdoo/dialogs/RpcExceptionDialog.js:81
+msgid "Not found: %1"
+msgstr "Не сущуествует: %1"
+
+#: fw/core/qooxdoo/dialogs/RpcExceptionDialog.js:85
+msgid "Out of date: %1"
+msgstr "Объект устарел: %1"
+
+#: fw/core/qooxdoo/dialogs/RpcExceptionDialog.js:93
+msgid "Permission denied"
+msgstr "Доступ запрещен"
+
+#: fw/core/qooxdoo/dialogs/RpcExceptionDialog.js:98
+msgid ""
+"Seems your session has been expired (error: #1006).\n"
+"If you want to continue working, please, enter your credentials after closing this dialog."
+msgstr ""
+
+#: fw/core/qooxdoo/dialogs/RpcExceptionDialog.js:106
+msgid "Invalid service name: %1"
+msgstr "Неверное имя службы: %1"
+
+#: fw/core/qooxdoo/dialogs/RpcExceptionDialog.js:110
+msgid "Service not found: %1"
+msgstr "Сервис не найден: %1"
+
+#: fw/core/qooxdoo/dialogs/RpcExceptionDialog.js:114
+msgid "Class not found: %1"
+msgstr "Класс не найден: %1"
+
+#: fw/core/qooxdoo/dialogs/RpcExceptionDialog.js:118
+msgid "Method not found: %1"
+msgstr "Метод не найден: %1"
+
+#: fw/core/qooxdoo/dialogs/RpcExceptionDialog.js:122
+msgid "Invalid parameter: %1"
+msgstr "Неверный параметр: %1"
+
+#: fw/core/qooxdoo/dialogs/RpcExceptionDialog.js:126
+msgid "Permission denied (RPC)"
+msgstr ""
+
+#: fw/core/qooxdoo/srvc/AuthSrvc.js:116
+msgid "Login, please wait..."
+msgstr "Осуществляется вход, подождите..."
+
+#: fw/core/qooxdoo/srvc/AuthSrvc.js:122
+msgid "Unexpected exception"
+msgstr "Неожиданное исключение"
+
+#: fw/core/qooxdoo/srvc/AuthSrvc.js:129
+msgid "Authentication failed"
+msgstr "Идентификация не удалась"
+
+#: fw/core/qooxdoo/srvc/AuthSrvc.js:129
+msgid "Incorrect username or password"
+msgstr "Неверное имя или пароль"
+
+#: fw/core/qooxdoo/srvc/AuthSrvc.js:170
+msgid "enter your username"
+msgstr "имя"
+
+#: fw/core/qooxdoo/srvc/AuthSrvc.js:171
+msgid "enter your password"
+msgstr "пароль"
+
+#: fw/core/qooxdoo/srvc/AuthSrvc.js:172
+msgid "Remember password"
+msgstr "Запомнить пароль"
+
+#: fw/core/qooxdoo/srvc/AuthSrvc.js:186
+msgid "Login"
+msgstr "Вход"
+
+#: fw/core/qooxdoo/srvc/WorkplacesSrvc.js:47
+msgid "No suitable workplace!"
+msgstr ""
+
+#: fw/core/qooxdoo/srvc/WorkplacesSrvc.js:60
+msgid "No suitable workplace (clazz == null)!"
+msgstr ""
+
+#: fw/core/qooxdoo/widgets/FormContainerBox.js:66
+#: fw/core/qooxdoo/widgets/FormContainerGrid.js:54
+msgid "This is a required field!"
+msgstr "Это обязательное поле"
+
+#: fw/core/qooxdoo/widgets/GenericWorkplace.js:26
+msgid "Settings"
+msgstr "Настройки"
+
+#: fw/core/qooxdoo/widgets/GenericWorkplace.js:30
+msgid "About"
+msgstr "О программе"
+
