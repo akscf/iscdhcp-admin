@@ -9,8 +9,8 @@
 ------------------------
 Changes log:<br>
 <b>15.10.2020</b> [dhcpadm_1_0_15102020.tar.gz](https://github.com/akscf/isc-dhcp-manager/blob/master/bin/dhcpadm_1_0_15102020.tar.gz)<br>
-    * web-ui updated
-    * backend updated
+    * web-ui updated<br>
+    * backend updated<br>
 
 <b>9.10.2019</b>
     * fexed bugs in UI<br>
