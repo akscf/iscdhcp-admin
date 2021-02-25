@@ -1,0 +1,16 @@
+1.0 15.10.2020
+    * new ui updated
+    * backend updated
+
+1.0 9.10.2019
+    * fexed some issues in UI
+    + added management functions (for leases): add/update/delete/get
+    
+1.0 26.09.2019
+    * fixed some issues in UI (language change)
+    * fixed some issues in backend (config)
+    + viewer UI
+
+1.0 17.05.2019
+    initial version
+
