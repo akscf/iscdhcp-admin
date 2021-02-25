@@ -1,6 +1,6 @@
 1.0 15.10.2020
-    * new ui updated
-    * backend updated
+    * updated ui 
+    * updated backend
 
 1.0 9.10.2019
     * fexed some issues in UI
