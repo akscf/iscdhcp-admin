@@ -16,6 +16,7 @@
 
 ## Documentations
 <a href="https://akscf.org/?page=projects/iscdhcpadm/main" target="_blank">Manuals</a><br>
+<a href="https://akscf.org/?page=projects/iscdhcpadm/license" target="_blank">License</a><br>
 <a href="https://akscf.org/?page=projects/iscdhcpadm/screenshots" target="_blank">Screenshots</a><br>
 
 
