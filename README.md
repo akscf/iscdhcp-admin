@@ -1,6 +1,8 @@
 <p>
- A simple web based application which helps to manage isc dhcp server, distributed under an open source license.<br>
+ A simple web based application which helps to manage isc dhcp server.<br>
  This is a rather old project and no longer develops, however, it still solves the tasks: manage static entries and find information by mac/ip.<br>
+---<br>
+ This application distributed as free and opensource, except the web interface, this part is also free but distributed without source code (but if someone really needs this code you can get it for a small fee)
 </p>
 
 ## Features list
