@@ -1,6 +1,6 @@
 <p>
  This is a quite old project that provides web-ui and simple json-rpc api to manage isc-dhcp server.<br>
- The backend is written in Perl, frontend - javascript/qooxdoo.<br>
+ The backend was written in Perl, frontend - javascript/qooxdoo.<br>
 </p>
 
 ### Features
