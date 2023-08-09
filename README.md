@@ -11,7 +11,7 @@
  - Json-rpc api
 
 ### Downloads
- - [dhcpadm_1_0_15102020.tar.gz](https://github.com/akscf/iscdhcp-admin/blob/master/bin/dhcpadm_1_0_15102020.tar.gz)
+ - [dhcpadm_1_0_15102020.tar.gz](https://github.com/akscf/iscdhcp-admin/releases/tag/dhcpadm_1_0_15102020)
 
 ### Related links
  - [Installation guide](https://akscf.org/?page=projects/iscdhcpadm/installation_guide)
