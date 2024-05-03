@@ -1,8 +1,9 @@
 # *****************************************************************************************
 # Generic exception
 #
-# Copyright (C) AlexandrinKS
-# https://akscf.me/
+#
+# (C)2021 aks
+# https://github.com/akscf/
 # *****************************************************************************************
 package WSP::WspException;
 use WSP::WspDefs qw (RPC_ERR_CODE_INTERNAL_ERROR);

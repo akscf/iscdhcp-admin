@@ -5,8 +5,9 @@
 #
 # based on http://www.json.org
 #
-# Copyright (C) AlexandrinKS
-# https://akscf.me/
+#
+# (C)2018 aks
+# https://github.com/akscf/
 # ******************************************************************************************
 package WSP::JSON;
 use Log::Log4perl;
