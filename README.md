@@ -3,18 +3,14 @@
  The backend was written in Perl, frontend - javascript/qooxdoo.<br>
 </p>
 
-### Features
+## Version-1.0
  - Manage static entries
- - Search by leases db
+ - Search by leasesdb
  - Journal viewer
  - Config editor
  - Json-rpc api
 
-### Downloads
- - [dhcpadm_1_0_15102020.tar.gz](https://github.com/akscf/iscdhcp-admin/releases/tag/dhcpadm_1_0_15102020)
-
-### Related links
- - [Installation guide](https://akscf.org/?page=projects/iscdhcpadm/installation_guide)
- - [API documentation](https://akscf.org/?page=projects/iscdhcpadm/api_doc)
- - [Screenshots](https://akscf.org/?page=projects/iscdhcpadm/screenshots)
+## Manuals
+ - [Installation guide](https://github.com/akscf/iscdhcp-admin/blob/main/docs/dhcpadm_1_0_installation_guide.pdf)
+ - [API documentation](https://github.com/akscf/iscdhcp-admin/blob/main/docs/dhcpadm_1_0_api.pdf)
 
